@@ -8,7 +8,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using Sklep_Leaware.Models;
+using SL.Model.Models;
 
 namespace Sklep_Leaware.Controllers
 {

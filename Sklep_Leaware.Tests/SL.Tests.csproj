@@ -92,9 +92,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Sklep_Leaware\Sklep_Leaware.csproj">
+    <ProjectReference Include="..\Sklep_Leaware\SL.Web.csproj">
       <Project>{C593D8F6-1B21-453C-BDF6-A163870D3B78}</Project>
-      <Name>Sklep_Leaware</Name>
+      <Name>SL.Web</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

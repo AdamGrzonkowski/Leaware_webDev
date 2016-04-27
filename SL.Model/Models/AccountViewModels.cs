@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Sklep_Leaware.Models
+namespace SL.Model.Models
 {
     public class ExternalLoginConfirmationViewModel
     {
-        [Required]
+        [Microsoft.Build.Framework.Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
@@ -25,10 +25,10 @@ namespace Sklep_Leaware.Models
 
     public class VerifyCodeViewModel
     {
-        [Required]
+        [Microsoft.Build.Framework.Required]
         public string Provider { get; set; }
 
-        [Required]
+        [Microsoft.Build.Framework.Required]
         [Display(Name = "Code")]
         public string Code { get; set; }
         public string ReturnUrl { get; set; }
@@ -41,19 +41,19 @@ namespace Sklep_Leaware.Models
 
     public class ForgotViewModel
     {
-        [Required]
+        [Microsoft.Build.Framework.Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
 
     public class LoginViewModel
     {
-        [Required]
+        [Microsoft.Build.Framework.Required]
         [Display(Name = "Email")]
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required]
+        [Microsoft.Build.Framework.Required]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
@@ -64,12 +64,12 @@ namespace Sklep_Leaware.Models
 
     public class RegisterViewModel
     {
-        [Required]
+        [Microsoft.Build.Framework.Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
+        [Microsoft.Build.Framework.Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
@@ -83,12 +83,12 @@ namespace Sklep_Leaware.Models
 
     public class ResetPasswordViewModel
     {
-        [Required]
+        [Microsoft.Build.Framework.Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
+        [Microsoft.Build.Framework.Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
@@ -104,7 +104,7 @@ namespace Sklep_Leaware.Models
 
     public class ForgotPasswordViewModel
     {
-        [Required]
+        [Microsoft.Build.Framework.Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
