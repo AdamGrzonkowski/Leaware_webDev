@@ -92,7 +92,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Sklep_Leaware\SL.Web.csproj">
+    <ProjectReference Include="..\SL.Web\SL.Web.csproj">
       <Project>{C593D8F6-1B21-453C-BDF6-A163870D3B78}</Project>
       <Name>SL.Web</Name>
     </ProjectReference>
