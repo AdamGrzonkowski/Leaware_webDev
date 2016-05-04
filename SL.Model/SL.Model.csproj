@@ -70,6 +70,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Users\Login.cs" />
     <Compile Include="Models\Users\Register.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using SL.Core;
 using SL.Core.Domain;
 using SL.Core.Interfaces.Services;
@@ -43,15 +44,15 @@ namespace Sklep_Leaware.Controllers
             return View(result);
         }
 
-        // GET: Users/Create
-        public virtual ActionResult Create()
+        // GET: Users/Register
+        public virtual ActionResult Register()
         {
             return View();
         }
 
-        // POST: Users/Create
+        // POST: Users/Register
         [HttpPost]
-        public virtual ActionResult Create(Register model)
+        public virtual ActionResult Register(Register model)
         {
             if (ModelState.IsValid)
             {
@@ -63,9 +64,45 @@ namespace Sklep_Leaware.Controllers
                 };
                 UsersService.Register(newUser);
 
-                return RedirectToAction("Index");
+                return RedirectToAction(MVC.Users.Index());
             }
             return View(model);
+        }
+
+        public virtual ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public virtual ActionResult Login(Login model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new Users {Username = model.Username, Password = model.Password};
+                if (UsersService.Login(user))
+                {
+                    FormsAuthentication.SetAuthCookie(user.Username, false);
+                }
+                else
+                {
+                    ModelState.AddModelError("Wrong data", CommonResources.UsersController_Login_WrongData);
+                    return View();
+                }
+                return RedirectToAction(MVC.Home.Index());
+            }
+            return View(model);
+        }
+
+        public virtual ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+
+            HttpCookie cookie1 = new HttpCookie(FormsAuthentication.FormsCookieName, "");
+            cookie1.Expires = DateTime.Now.AddYears(-1);
+            Response.Cookies.Add(cookie1);
+
+            return RedirectToAction(MVC.Home.Index());
         }
 
         // GET: Users/Edit/5

@@ -29,7 +29,6 @@ public static partial class MVC
 {
     public static Sklep_Leaware.Controllers.HomeController Home = new Sklep_Leaware.Controllers.T4MVC_HomeController();
     public static Sklep_Leaware.Controllers.UsersController Users = new Sklep_Leaware.Controllers.T4MVC_UsersController();
-    public static T4MVC.ManageController Manage = new T4MVC.ManageController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 

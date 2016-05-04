@@ -12,5 +12,6 @@ namespace SL.Core.Interfaces.Services
         List<Users> GetAllUsers();
         Users GetDetails(long? id);
         void Register(Users user);
+        bool Login(Users user);
     }
 }

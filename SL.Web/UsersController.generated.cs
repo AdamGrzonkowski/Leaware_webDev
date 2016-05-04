@@ -92,7 +92,8 @@ namespace Sklep_Leaware.Controllers
         {
             public readonly string Index = "Index";
             public readonly string Details = "Details";
-            public readonly string Create = "Create";
+            public readonly string Register = "Register";
+            public readonly string Login = "Login";
             public readonly string Edit = "Edit";
             public readonly string Delete = "Delete";
         }
@@ -102,7 +103,8 @@ namespace Sklep_Leaware.Controllers
         {
             public const string Index = "Index";
             public const string Details = "Details";
-            public const string Create = "Create";
+            public const string Register = "Register";
+            public const string Login = "Login";
             public const string Edit = "Edit";
             public const string Delete = "Delete";
         }
@@ -116,11 +118,19 @@ namespace Sklep_Leaware.Controllers
         {
             public readonly string id = "id";
         }
-        static readonly ActionParamsClass_Create s_params_Create = new ActionParamsClass_Create();
+        static readonly ActionParamsClass_Register s_params_Register = new ActionParamsClass_Register();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_Create CreateParams { get { return s_params_Create; } }
+        public ActionParamsClass_Register RegisterParams { get { return s_params_Register; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_Create
+        public class ActionParamsClass_Register
+        {
+            public readonly string model = "model";
+        }
+        static readonly ActionParamsClass_Login s_params_Login = new ActionParamsClass_Login();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Login LoginParams { get { return s_params_Login; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Login
         {
             public readonly string model = "model";
         }
@@ -152,17 +162,19 @@ namespace Sklep_Leaware.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string Create = "Create";
                 public readonly string Delete = "Delete";
                 public readonly string Details = "Details";
                 public readonly string Edit = "Edit";
                 public readonly string Index = "Index";
+                public readonly string Login = "Login";
+                public readonly string Register = "Register";
             }
-            public readonly string Create = "~/Views/Users/Create.cshtml";
             public readonly string Delete = "~/Views/Users/Delete.cshtml";
             public readonly string Details = "~/Views/Users/Details.cshtml";
             public readonly string Edit = "~/Views/Users/Edit.cshtml";
             public readonly string Index = "~/Views/Users/Index.cshtml";
+            public readonly string Login = "~/Views/Users/Login.cshtml";
+            public readonly string Register = "~/Views/Users/Register.cshtml";
         }
     }
 
@@ -195,25 +207,48 @@ namespace Sklep_Leaware.Controllers
         }
 
         [NonAction]
-        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+        partial void RegisterOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Create()
+        public override System.Web.Mvc.ActionResult Register()
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
-            CreateOverride(callInfo);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Register);
+            RegisterOverride(callInfo);
             return callInfo;
         }
 
         [NonAction]
-        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, SL.Model.Models.Users.Register model);
+        partial void RegisterOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, SL.Model.Models.Users.Register model);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Create(SL.Model.Models.Users.Register model)
+        public override System.Web.Mvc.ActionResult Register(SL.Model.Models.Users.Register model)
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Register);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
-            CreateOverride(callInfo, model);
+            RegisterOverride(callInfo, model);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void LoginOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Login()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Login);
+            LoginOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void LoginOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, SL.Model.Models.Users.Login model);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Login(SL.Model.Models.Users.Login model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Login);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            LoginOverride(callInfo, model);
             return callInfo;
         }
 

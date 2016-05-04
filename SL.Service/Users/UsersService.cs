@@ -42,6 +42,20 @@ namespace SL.Service.Users
             UnitOfWork.Save();
         }
 
+        public bool Login(Core.Domain.Users user)
+        {
+            var userByUsername = UnitOfWork.UsersRepository.GetAll().FirstOrDefault(x => x.Username == user.Username);
+            if (userByUsername == null)
+            {
+                return false;
+            }
+
+            var salt = userByUsername.Salt;
+            var hashPass = HashPassword(user.Password, salt);
+
+            return userByUsername.Password == hashPass;
+        }
+
         #region Helpers
         public static string HashPassword(string passwd, string salt = null)
         {
