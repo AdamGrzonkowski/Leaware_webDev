@@ -27,6 +27,7 @@ using T4MVC;
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
 public static partial class MVC
 {
+    public static Sklep_Leaware.Controllers.BooksController Books = new Sklep_Leaware.Controllers.T4MVC_BooksController();
     public static Sklep_Leaware.Controllers.HomeController Home = new Sklep_Leaware.Controllers.T4MVC_HomeController();
     public static Sklep_Leaware.Controllers.UsersController Users = new Sklep_Leaware.Controllers.T4MVC_UsersController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();

@@ -10,9 +10,11 @@ using SL.Core.Interfaces.Services;
 using SL.Core.Interfaces.UnitOfWork;
 using SL.Model;
 using SL.Model.Models.Users;
+using SL.Repository.Products;
 using SL.Repository.UnitOfWork;
 using SL.Repository.Users;
 using SL.Repository._Base;
+using SL.Service.Products;
 using SL.Service.Users;
 
 namespace Sklep_Leaware.IoC
@@ -30,10 +32,12 @@ namespace Sklep_Leaware.IoC
             #region Repositories
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>));
             builder.RegisterType<UsersRepository>().As<IUsersRepository>().InstancePerRequest();
+            builder.RegisterType<BooksRepository>().As<IBooksRepository>().InstancePerRequest();
             #endregion
 
             #region Services
             builder.RegisterType<UsersService>().As<IUsersService>().InstancePerRequest();
+            builder.RegisterType<BooksService>().As<IBooksService>().InstancePerRequest();
             #endregion
 
             var container = builder.Build();

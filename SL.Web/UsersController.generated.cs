@@ -94,6 +94,7 @@ namespace Sklep_Leaware.Controllers
             public readonly string Details = "Details";
             public readonly string Register = "Register";
             public readonly string Login = "Login";
+            public readonly string LogOut = "LogOut";
             public readonly string Edit = "Edit";
             public readonly string Delete = "Delete";
         }
@@ -105,6 +106,7 @@ namespace Sklep_Leaware.Controllers
             public const string Details = "Details";
             public const string Register = "Register";
             public const string Login = "Login";
+            public const string LogOut = "LogOut";
             public const string Edit = "Edit";
             public const string Delete = "Delete";
         }
@@ -249,6 +251,17 @@ namespace Sklep_Leaware.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Login);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
             LoginOverride(callInfo, model);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void LogOutOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult LogOut()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.LogOut);
+            LogOutOverride(callInfo);
             return callInfo;
         }
 
