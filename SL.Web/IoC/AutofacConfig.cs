@@ -3,11 +3,13 @@ using Autofac;
 using Autofac.Integration.Mvc;
 using SL.Core;
 using SL.Core.Interfaces.Repositories;
+using SL.Core.Interfaces.Services;
 using SL.Core.Interfaces.UnitOfWork;
 using SL.Model;
 using SL.Repository.UnitOfWork;
 using SL.Repository.Users;
 using SL.Repository._Base;
+using SL.Service.Users;
 
 namespace Sklep_Leaware.IoC
 {
@@ -26,6 +28,9 @@ namespace Sklep_Leaware.IoC
             builder.RegisterType<UsersRepository>().As<IUsersRepository>().InstancePerRequest();
             #endregion
 
+            #region Services
+            builder.RegisterType<UsersService>().As<IUsersService>().InstancePerRequest();
+            #endregion
 
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

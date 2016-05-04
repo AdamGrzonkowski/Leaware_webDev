@@ -6,7 +6,6 @@ namespace SL.Core.Domain
     {
         [Key]
         public long Id { get; set; }
-        [EmailAddress]
         public string Email { get; set; }
         public string Username { get; set; }
         public string Salt { get; set; }

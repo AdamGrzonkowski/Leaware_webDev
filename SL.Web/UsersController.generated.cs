@@ -22,8 +22,6 @@ using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
-using SL.Core;
-using SL.Core.Domain;
 using T4MVC;
 namespace Sklep_Leaware.Controllers
 {
@@ -208,10 +206,10 @@ namespace Sklep_Leaware.Controllers
         }
 
         [NonAction]
-        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, Users model);
+        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, SL.Model.Models.Users.Register model);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Create(Users model)
+        public override System.Web.Mvc.ActionResult Create(SL.Model.Models.Users.Register model)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);

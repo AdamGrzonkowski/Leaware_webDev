@@ -6,23 +6,24 @@ using System.Web;
 using System.Web.Mvc;
 using SL.Core;
 using SL.Core.Domain;
+using SL.Core.Interfaces.Services;
 using SL.Core.Interfaces.UnitOfWork;
 using SL.Model;
+using SL.Model.Models.Users;
 
 namespace Sklep_Leaware.Controllers
 {
     public partial class UsersController : Controller
     {
-        private IUnitOfWork UnitOfWork { get; set; }
-
-        public UsersController(IUnitOfWork unitOfWork)
+        private IUsersService UsersService { get; set; }
+        public UsersController(IUsersService usersService)
         {
-            UnitOfWork = unitOfWork;
+            UsersService = usersService;
         }
 
         public virtual ActionResult Index()
         {
-            var result = UnitOfWork.UsersRepository.GetAll();
+            var result = UsersService.GetAllUsers();
             return View(result);
         }
 
@@ -34,7 +35,7 @@ namespace Sklep_Leaware.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var result = UnitOfWork.UsersRepository.GetById(id.Value);
+            var result = UsersService.GetDetails(id);
             if (result == null)
             {
                 return HttpNotFound();
@@ -50,12 +51,18 @@ namespace Sklep_Leaware.Controllers
 
         // POST: Users/Create
         [HttpPost]
-        public virtual ActionResult Create(Users model)
+        public virtual ActionResult Create(Register model)
         {
             if (ModelState.IsValid)
             {
-                UnitOfWork.UsersRepository.Add(model);
-                UnitOfWork.Save();
+                var newUser = new Users
+                {
+                    Email = model.Email,
+                    Username = model.Username,
+                    Password = model.Password
+                };
+                UsersService.Register(newUser);
+
                 return RedirectToAction("Index");
             }
             return View(model);
