@@ -9,10 +9,12 @@ namespace SL.Repository.UnitOfWork
     {
         private readonly ApplicationDbContext _context;
         public IUsersRepository UsersRepository { get; private set; }
-        public UnitOfWork(ApplicationDbContext context, IUsersRepository usersRepo)
+        public IBooksRepository BooksRepository { get; private set; }
+        public UnitOfWork(ApplicationDbContext context, IUsersRepository usersRepo, IBooksRepository booksRepo)
         {
             _context = context;
             UsersRepository = usersRepo;
+            BooksRepository = booksRepo;
         }
 
         public int Save()

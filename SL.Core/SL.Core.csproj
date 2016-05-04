@@ -63,10 +63,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\Products\Books.cs" />
     <Compile Include="Domain\Users\Roles.cs" />
     <Compile Include="Domain\Users\Users.cs" />
+    <Compile Include="Interfaces\Repositories\IBooksRepository.cs" />
     <Compile Include="Interfaces\Repositories\IRepository.cs" />
     <Compile Include="Interfaces\Repositories\IUsersRepository.cs" />
+    <Compile Include="Interfaces\Services\IBooksService.cs" />
     <Compile Include="Interfaces\Services\IUsersService.cs" />
     <Compile Include="Interfaces\UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
