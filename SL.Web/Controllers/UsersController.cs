@@ -5,6 +5,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using AutoMapper;
+using Sklep_Leaware.IoC;
 using SL.Core;
 using SL.Core.Domain;
 using SL.Core.Interfaces.Services;
@@ -56,13 +58,8 @@ namespace Sklep_Leaware.Controllers
         {
             if (ModelState.IsValid)
             {
-                var newUser = new Users
-                {
-                    Email = model.Email,
-                    Username = model.Username,
-                    Password = model.Password
-                };
-                UsersService.Register(newUser);
+                var user = Mapper.Map<Register, Users>(model);
+                UsersService.Register(user);
 
                 return RedirectToAction(MVC.Users.Index());
             }
@@ -79,7 +76,7 @@ namespace Sklep_Leaware.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new Users {Username = model.Username, Password = model.Password};
+                var user = Mapper.Map<Login, Users>(model);
                 if (UsersService.Login(user))
                 {
                     FormsAuthentication.SetAuthCookie(user.Username, false);

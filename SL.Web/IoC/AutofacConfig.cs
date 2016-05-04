@@ -1,11 +1,16 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Linq;
+using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
+using AutoMapper;
 using SL.Core;
+using SL.Core.Domain;
 using SL.Core.Interfaces.Repositories;
 using SL.Core.Interfaces.Services;
 using SL.Core.Interfaces.UnitOfWork;
 using SL.Model;
+using SL.Model.Models.Users;
 using SL.Repository.UnitOfWork;
 using SL.Repository.Users;
 using SL.Repository._Base;
@@ -13,7 +18,7 @@ using SL.Service.Users;
 
 namespace Sklep_Leaware.IoC
 {
-    public class AutofacConfig
+    public static class AutofacConfig
     {
         public static void ConfigureContainer()
         {
