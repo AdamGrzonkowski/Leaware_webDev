@@ -1,6 +1,7 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace SL.Core.Domain
+namespace SL.Core.Domain.Users
 {
     public class Users
     {
@@ -11,6 +12,7 @@ namespace SL.Core.Domain
         public string Salt { get; set; }
         public string Password { get; set; }
         public bool IsActive { get; set; }
-        
+        public virtual ICollection<Roles> Roles { get; set; }
+
     }
 }

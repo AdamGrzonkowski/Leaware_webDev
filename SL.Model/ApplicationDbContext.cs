@@ -1,5 +1,6 @@
 using System.Data.Entity;
-using SL.Core.Domain;
+using SL.Core.Domain.Users;
+using SL.Model.Migrations;
 
 namespace SL.Model
 {
@@ -8,6 +9,7 @@ namespace SL.Model
         public ApplicationDbContext()
             : base("DefaultConnection")
         {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
         }
 
         public virtual DbSet<Users> Users { get; set; }

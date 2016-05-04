@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
-using SL.Core.Domain;
+using SL.Core.Domain.Users;
 using SL.Model.Models.Users;
 
 namespace Sklep_Leaware.AutoMapper

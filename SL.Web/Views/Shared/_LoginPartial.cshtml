@@ -2,7 +2,10 @@
 @if (Request.Cookies[FormsAuthentication.FormsCookieName] != null)
 {
     <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Wyloguj", "Logout", "Users")</li>
+        @{
+            var loggedUsername = FormsAuthentication.Decrypt(Request.Cookies[FormsAuthentication.FormsCookieName].Value).Name;
+        }
+        <li>@Html.ActionLink("Wyloguj "+ loggedUsername, "Logout", "Users")</li>
     </ul>
 }
 else

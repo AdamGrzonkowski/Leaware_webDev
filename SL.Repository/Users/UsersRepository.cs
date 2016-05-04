@@ -10,7 +10,7 @@ using SL.Repository._Base;
 
 namespace SL.Repository.Users
 {
-    public class UsersRepository : Repository<Core.Domain.Users>, IUsersRepository
+    public class UsersRepository : Repository<Core.Domain.Users.Users>, IUsersRepository
     {
         public UsersRepository(ApplicationDbContext context) : base(context)
         {

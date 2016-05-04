@@ -65,6 +65,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
+    <Compile Include="Migrations\201605041641324_InitialCreate.cs" />
+    <Compile Include="Migrations\201605041641324_InitialCreate.Designer.cs">
+      <DependentUpon>201605041641324_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -85,6 +90,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\201605041641324_InitialCreate.resx">
+      <DependentUpon>201605041641324_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModelResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ModelResources.Designer.cs</LastGenOutput>

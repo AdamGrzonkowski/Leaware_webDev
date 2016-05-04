@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using SL.Core.Interfaces.Services;
 using SL.Core.Interfaces.UnitOfWork;
-using SL.Core.Domain;
 using SL.Model.Models.Users;
 
 namespace SL.Service.Users
@@ -20,19 +19,19 @@ namespace SL.Service.Users
             UnitOfWork = unitOfWork;
         }
 
-        public List<Core.Domain.Users> GetAllUsers()
+        public List<Core.Domain.Users.Users> GetAllUsers()
         {
             var result = UnitOfWork.UsersRepository.GetAll().ToList();
             return result;
         }
 
-        public Core.Domain.Users GetDetails(long? id)
+        public Core.Domain.Users.Users GetDetails(long? id)
         {
             var result = UnitOfWork.UsersRepository.GetById(id.Value);
             return result;
         }
 
-        public void Register(Core.Domain.Users user)
+        public void Register(Core.Domain.Users.Users user)
         {
             user.Salt = GenerateSalt();
             user.Password = HashPassword(user.Password, user.Salt);
@@ -42,7 +41,7 @@ namespace SL.Service.Users
             UnitOfWork.Save();
         }
 
-        public bool Login(Core.Domain.Users user)
+        public bool Login(Core.Domain.Users.Users user)
         {
             var userByUsername = UnitOfWork.UsersRepository.GetAll().FirstOrDefault(x => x.Username == user.Username);
             if (userByUsername == null)

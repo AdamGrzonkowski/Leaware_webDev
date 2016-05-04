@@ -5,7 +5,6 @@ using Autofac;
 using Autofac.Integration.Mvc;
 using AutoMapper;
 using SL.Core;
-using SL.Core.Domain;
 using SL.Core.Interfaces.Repositories;
 using SL.Core.Interfaces.Services;
 using SL.Core.Interfaces.UnitOfWork;

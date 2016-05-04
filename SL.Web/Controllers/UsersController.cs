@@ -8,7 +8,7 @@ using System.Web.Security;
 using AutoMapper;
 using Sklep_Leaware.IoC;
 using SL.Core;
-using SL.Core.Domain;
+using SL.Core.Domain.Users;
 using SL.Core.Interfaces.Services;
 using SL.Core.Interfaces.UnitOfWork;
 using SL.Model;

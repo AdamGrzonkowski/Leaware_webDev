@@ -10,7 +10,6 @@ using Autofac.Integration.Mvc;
 using AutoMapper;
 using Sklep_Leaware.AutoMapper;
 using Sklep_Leaware.IoC;
-using SL.Core.Domain;
 using SL.Model.Models.Users;
 
 namespace Sklep_Leaware

@@ -63,7 +63,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\Users.cs" />
+    <Compile Include="Domain\Users\Roles.cs" />
+    <Compile Include="Domain\Users\Users.cs" />
     <Compile Include="Interfaces\Repositories\IRepository.cs" />
     <Compile Include="Interfaces\Repositories\IUsersRepository.cs" />
     <Compile Include="Interfaces\Services\IUsersService.cs" />
