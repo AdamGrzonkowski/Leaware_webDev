@@ -8,7 +8,6 @@ namespace Sklep_Leaware
     {
         public void Configuration(IAppBuilder app)
         {
-            ConfigureAuth(app);
         }
     }
 }

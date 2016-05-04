@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SL.Core.Domain;
 
-namespace SL.Model
+namespace SL.Core.Interfaces.Repositories
 {
-    public class Class1
+    public interface IUsersRepository : IRepository<Users>
     {
     }
 }
