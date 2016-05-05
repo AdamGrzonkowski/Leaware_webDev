@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace SL.Core.Interfaces.Repositories
+namespace SL.Core.Interfaces.Repositories._Base
 {
     public interface IRepository<TEntity> where TEntity : class
     {

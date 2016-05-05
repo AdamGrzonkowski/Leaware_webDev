@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SL.Core.Domain.Products;
 using SL.Core.Interfaces.Services;
+using SL.Core.Interfaces.Services.Products;
 using SL.Core.Interfaces.UnitOfWork;
 
 namespace SL.Service.Products

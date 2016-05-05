@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SL.Core;
-using SL.Core.Interfaces.Repositories;
+using SL.Core.Interfaces.Repositories.Orders;
 using SL.Model;
-using SL.Repository._Base;
+using SL.Repository.Repositories._Base;
 
-namespace SL.Repository.Users
+namespace SL.Repository.Repositories.Orders
 {
-    public class UsersRepository : Repository<Core.Domain.Users.Users>, IUsersRepository
+    public class CartRepository : Repository<Core.Domain.Orders.Cart>, ICartRepository
     {
-        public UsersRepository(ApplicationDbContext context) : base(context)
+        public CartRepository(ApplicationDbContext context) : base(context)
         {
         }
 

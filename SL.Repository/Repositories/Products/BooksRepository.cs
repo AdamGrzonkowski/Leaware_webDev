@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SL.Core.Interfaces.Repositories;
+﻿using SL.Core.Interfaces.Repositories;
+using SL.Core.Interfaces.Repositories.Products;
 using SL.Model;
-using SL.Repository._Base;
+using SL.Repository.Repositories._Base;
 
-namespace SL.Repository.Products
+namespace SL.Repository.Repositories.Products
 {
     public class BooksRepository : Repository<Core.Domain.Products.Books>, IBooksRepository
     {

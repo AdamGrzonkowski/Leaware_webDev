@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using SL.Core.Domain.Products;
 using SL.Core.Interfaces.Services;
+using SL.Core.Interfaces.Services.Products;
 using SL.Model;
 
 namespace Sklep_Leaware.Controllers

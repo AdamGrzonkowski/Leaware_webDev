@@ -63,14 +63,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\Orders\Cart.cs" />
+    <Compile Include="Domain\Orders\Order.cs" />
+    <Compile Include="Domain\Orders\OrderDetail.cs" />
     <Compile Include="Domain\Products\Books.cs" />
     <Compile Include="Domain\Users\Roles.cs" />
     <Compile Include="Domain\Users\Users.cs" />
-    <Compile Include="Interfaces\Repositories\IBooksRepository.cs" />
-    <Compile Include="Interfaces\Repositories\IRepository.cs" />
-    <Compile Include="Interfaces\Repositories\IUsersRepository.cs" />
-    <Compile Include="Interfaces\Services\IBooksService.cs" />
-    <Compile Include="Interfaces\Services\IUsersService.cs" />
+    <Compile Include="Interfaces\Repositories\Orders\ICartRepository.cs" />
+    <Compile Include="Interfaces\Repositories\Orders\IOrderDetailRepository.cs" />
+    <Compile Include="Interfaces\Repositories\Orders\IOrdersRepository.cs" />
+    <Compile Include="Interfaces\Repositories\Products\IBooksRepository.cs" />
+    <Compile Include="Interfaces\Repositories\Users\IUsersRepository.cs" />
+    <Compile Include="Interfaces\Repositories\_Base\IRepository.cs" />
+    <Compile Include="Interfaces\Services\Orders\ICartService.cs" />
+    <Compile Include="Interfaces\Services\Products\IBooksService.cs" />
+    <Compile Include="Interfaces\Services\Users\IUsersService.cs" />
     <Compile Include="Interfaces\UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

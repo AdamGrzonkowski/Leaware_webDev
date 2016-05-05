@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using SL.Core.Interfaces.Services;
+using SL.Core.Interfaces.Services.Users;
 using SL.Core.Interfaces.UnitOfWork;
 using SL.Model.Models.Users;
 

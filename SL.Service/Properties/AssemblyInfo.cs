@@ -34,3 +34,7 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: InternalsVisibleTo("SL.Service.Tests")]
+[assembly: InternalsVisibleTo("SL.Service.Explorables")]
+[assembly: InternalsVisibleTo("Tests")]
+

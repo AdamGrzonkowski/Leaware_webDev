@@ -13,9 +13,6 @@ namespace SL.Model
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
         }
 
-        public virtual DbSet<Users> Users { get; set; }
-        public virtual DbSet<Books> Books { get; set; }
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Users>();

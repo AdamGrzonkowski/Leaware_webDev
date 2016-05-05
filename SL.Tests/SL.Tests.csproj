@@ -77,6 +77,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SL.Service\SL.Service.csproj">
+      <Project>{9A58BDBE-3A11-456B-B36A-23D3ECC17733}</Project>
+      <Name>SL.Service</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SL.Web\SL.Web.csproj">
       <Project>{C593D8F6-1B21-453C-BDF6-A163870D3B78}</Project>
       <Name>SL.Web</Name>

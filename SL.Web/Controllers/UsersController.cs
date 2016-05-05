@@ -10,6 +10,7 @@ using Sklep_Leaware.IoC;
 using SL.Core;
 using SL.Core.Domain.Users;
 using SL.Core.Interfaces.Services;
+using SL.Core.Interfaces.Services.Users;
 using SL.Core.Interfaces.UnitOfWork;
 using SL.Model;
 using SL.Model.Models.Users;

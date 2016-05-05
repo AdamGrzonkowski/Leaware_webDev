@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SL.Core.Domain.Users;
 
-namespace SL.Core.Interfaces.Repositories
+namespace SL.Core.Interfaces.Services.Orders
 {
-    public interface IUsersRepository : IRepository<Users>
+    public interface ICartService
     {
     }
 }

@@ -50,11 +50,14 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Products\BooksRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Orders\CartRepository.cs" />
+    <Compile Include="Repositories\Orders\OrderDetailRepository.cs" />
+    <Compile Include="Repositories\Orders\OrdersRepository.cs" />
+    <Compile Include="Repositories\Products\BooksRepository.cs" />
+    <Compile Include="Repositories\Users\UsersRepository.cs" />
+    <Compile Include="Repositories\_Base\Repository.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
-    <Compile Include="Users\UsersRepository.cs" />
-    <Compile Include="_Base\Repository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -70,6 +73,7 @@
       <Name>SL.Model</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
