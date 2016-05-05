@@ -26,6 +26,9 @@ namespace Sklep_Leaware
             bundles.Add(new ScriptBundle("~/bundles/orders").Include(
                 "~/Scripts/Areas/Orders/cart.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/common").Include(
+                "~/Scripts/_Common/navigationCommon.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
