@@ -1,4 +1,5 @@
 using System.Data.Entity;
+using SL.Core.Domain.Orders;
 using SL.Core.Domain.Products;
 using SL.Core.Domain.Users;
 using SL.Model.Migrations;
@@ -16,7 +17,10 @@ namespace SL.Model
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Users>();
-            modelBuilder.Entity<Books>();   
+            modelBuilder.Entity<Books>();
+            modelBuilder.Entity<Cart>();
+            modelBuilder.Entity<Order>();
+            modelBuilder.Entity<OrderDetail>();
         }
     }
 }

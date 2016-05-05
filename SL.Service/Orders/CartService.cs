@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SL.Core.Domain.Orders;
+using SL.Core.Domain.Products;
 using SL.Core.Interfaces.Services.Orders;
 using SL.Core.Interfaces.UnitOfWork;
 
@@ -16,5 +18,7 @@ namespace SL.Service.Orders
         {
             UnitOfWork = unitOfWork;
         }
+
+
     }
 }
