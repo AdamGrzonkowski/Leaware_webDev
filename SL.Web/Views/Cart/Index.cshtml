@@ -1,0 +1,20 @@
+﻿@model SL.Core.Domain.Orders.Cart
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>title</h2>
+    <tr>
+        <td>
+            @Model.Identifier
+        </td>
+        <td>
+            @Model.Id
+        </td>
+        <td>
+            @Model.DateCreated
+        </td>
+    </tr>

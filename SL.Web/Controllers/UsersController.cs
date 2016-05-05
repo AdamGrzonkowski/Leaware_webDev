@@ -95,10 +95,7 @@ namespace Sklep_Leaware.Controllers
         public virtual ActionResult LogOut()
         {
             FormsAuthentication.SignOut();
-
-            HttpCookie cookie1 = new HttpCookie(FormsAuthentication.FormsCookieName, "");
-            cookie1.Expires = DateTime.Now.AddYears(-1);
-            Response.Cookies.Add(cookie1);
+            Session.Abandon();
 
             return RedirectToAction(MVC.Home.Index());
         }

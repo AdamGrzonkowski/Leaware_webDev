@@ -12,8 +12,8 @@ namespace SL.Core.Domain.Orders
     {
         [Key]
         public long Id { get; set; }
-        public string CartId { get; set; }
-        public int AlbumId { get; set; }
+        public string Identifier { get; set; }
+        public long BookId { get; set; }
         public int Count { get; set; }
         public System.DateTime DateCreated { get; set; }
         public virtual Books Books { get; set; }
