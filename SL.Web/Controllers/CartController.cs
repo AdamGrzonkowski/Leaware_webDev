@@ -21,6 +21,7 @@ namespace Sklep_Leaware.Controllers
             CartService = cartService;
         }
         public const string CartSessionKey = "CartId";
+        const string PromoCode = "FREE";
         // GET: Cart
         public virtual ActionResult Index()
         {
@@ -65,6 +66,63 @@ namespace Sklep_Leaware.Controllers
             };
             return Json(results);
         }
+
+        public ActionResult AddressAndPayment()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddressAndPayment(FormCollection values)
+        {
+            var order = new Order();
+            TryUpdateModel(order);
+
+            try
+            {
+                if (string.Equals(values["PromoCode"], PromoCode,
+                    StringComparison.OrdinalIgnoreCase) == false)
+                {
+                    return View(order);
+                }
+                else
+                {
+                    order.Username = User.Identity.Name;
+                    order.OrderDate = DateTime.Now;
+
+                    //Save Order
+                    CartService.AddOrder(order);
+
+                    //Process the order
+                    var cart = GetCart(this.HttpContext);
+                    CartService.CreateOrder(order, cart);
+
+                    return RedirectToAction("Complete",
+                        new { id = order.OrderId });
+                }
+            }
+            catch
+            {
+                //Invalid - redisplay with errors
+                return View(order);
+            }
+        }
+
+        public ActionResult Complete(int id)
+        {
+            var userName = GetCart(this.HttpContext).Identifier;
+            // Check if it's this user order
+            bool isValid = CartService.ValidateOrder(id, userName);
+            if (isValid)
+            {
+                return View(id);
+            }
+            else
+            {
+                return View("Error");
+            }
+        }
+
 
         public virtual Cart GetCart(HttpContextBase context)
         {

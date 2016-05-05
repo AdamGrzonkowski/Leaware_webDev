@@ -102,6 +102,18 @@ namespace SL.Service.Orders
             return total ?? decimal.Zero;
         }
 
+        public void AddOrder(Order order)
+        {
+            UnitOfWork.OrdersRepository.Add(order);
+            UnitOfWork.Save();
+        }
+
+        public bool ValidateOrder(long orderId, string userName)
+        {
+            var result = UnitOfWork.OrdersRepository.GetAll().Any(x => x.OrderId == orderId && x.Username == userName);
+            return result;
+        }
+
         public long CreateOrder(Order order, Cart cart)
         {
             decimal orderTotal = 0;
@@ -123,6 +135,7 @@ namespace SL.Service.Orders
 
             }
             order.Total = orderTotal;
+            UnitOfWork.OrdersRepository.Add(order);
 
             UnitOfWork.Save();
             EmptyCart(cart);
