@@ -1,4 +1,4 @@
-﻿@model SL.Core.Domain.Orders.Cart
+﻿@model SL.Model.Models.Orders.ShoppingCart
 
 @{
     ViewBag.Title = "View";
@@ -9,12 +9,15 @@
 <h2>title</h2>
     <tr>
         <td>
-            @Model.Identifier
+            @foreach (var item in Model.CartItems)
+            {
+                @item.Books.Title
+                @item.Books.Author
+                @item.Count
+            }
         </td>
         <td>
-            @Model.Id
+            @Model.CartTotal
         </td>
-        <td>
-            @Model.DateCreated
-        </td>
+
     </tr>

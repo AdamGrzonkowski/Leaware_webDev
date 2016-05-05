@@ -9,8 +9,11 @@ namespace SL.Core.Interfaces.Services.Orders
 {
     public interface ICartService
     {
-        List<Cart> ShowCart();
+        List<Cart> GetCartItems(Cart cart);
         bool AddToCart(long bookId, Cart cart);
         int RemoveFromCart(long bookId, Cart cart);
+        void EmptyCart(Cart cart);
+        decimal GetTotalPrice(Cart cart);
+        long CreateOrder(Order order, Cart cart);
     }
 }

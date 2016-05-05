@@ -4,8 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using AutoMapper;
 using SL.Core.Domain.Orders;
+using SL.Core.Domain.Users;
 using SL.Core.Interfaces.Services.Orders;
+using SL.Model.Models.Orders;
+using SL.Model.Models.Users;
 
 namespace Sklep_Leaware.Controllers
 {
@@ -21,7 +25,12 @@ namespace Sklep_Leaware.Controllers
         public virtual ActionResult Index()
         {
             var cart = GetCart(this.HttpContext);
-            return View(cart);
+            var viewModel = new ShoppingCart
+            {
+                CartItems = CartService.GetCartItems(cart),
+                CartTotal = CartService.GetTotalPrice(cart)
+            };
+            return View(viewModel);
         }
 
         public virtual ActionResult AddToCart(long id)
@@ -46,18 +55,18 @@ namespace Sklep_Leaware.Controllers
             return RedirectToAction(MVC.Books.Index());
         }
 
-        public Cart GetCart(HttpContextBase context)
+        public virtual Cart GetCart(HttpContextBase context)
         {
             var cart = new Cart {Identifier = GetCartId(context)};
             return cart;
         }
 
-        public Cart GetCart(Controller controller)
+        public virtual Cart GetCart(Controller controller)
         {
             return GetCart(controller.HttpContext);
         }
 
-        public string GetCartId(HttpContextBase context)
+        public virtual string GetCartId(HttpContextBase context)
         {
             if (context.Session[CartSessionKey] == null)
             {

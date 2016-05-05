@@ -71,10 +71,56 @@ namespace SL.Service.Orders
         }
 
 
-        public List<Cart> ShowCart()
+        public List<Cart> GetCartItems(Cart cart)
         {
-            var result = UnitOfWork.CartRepository.GetAll().ToList();
+            var result = UnitOfWork.CartRepository.GetAll().Where(x => x.Identifier == cart.Identifier).ToList();
             return result;
+        }
+
+        public void EmptyCart(Cart cart)
+        {
+            var cartItems = UnitOfWork.CartRepository.GetAll().Where(x => x.Identifier == cart.Identifier).ToList();
+            UnitOfWork.CartRepository.RemoveRange(cartItems);
+            UnitOfWork.Save();
+        }
+
+        public decimal GetTotalPrice(Cart cart)
+        {
+            decimal? total = (from cartItems in UnitOfWork.CartRepository.GetAll()
+                              where cartItems.Identifier == cart.Identifier
+                              select (int?)cartItems.Count *
+                              cartItems.Books.Price).Sum();
+
+            return total ?? decimal.Zero;
+        }
+
+        public long CreateOrder(Order order, Cart cart)
+        {
+            decimal orderTotal = 0;
+
+            var cartItems = GetCartItems(cart);
+
+            foreach (var item in cartItems)
+            {
+                var orderDetail = new OrderDetail
+                {
+                    BookId = item.BookId,
+                    OrderId = order.OrderId,
+                    UnitPrice = item.Books.Price,
+                    Quantity = item.Count
+                };
+                // Set the order total of the shopping cart
+                orderTotal += (item.Count*item.Books.Price);
+                UnitOfWork.OrderDetailRepository.Add(orderDetail);
+
+            }
+            order.Total = orderTotal;
+
+            UnitOfWork.Save();
+            EmptyCart(cart);
+
+            // Return the OrderId as the confirmation number
+            return order.OrderId;
         }
 
     }
