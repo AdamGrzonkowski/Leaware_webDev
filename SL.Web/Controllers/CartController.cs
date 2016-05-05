@@ -20,8 +20,9 @@ namespace Sklep_Leaware.Controllers
         {
             CartService = cartService;
         }
+
         public const string CartSessionKey = "CartId";
-        const string PromoCode = "FREE";
+
         // GET: Cart
         public virtual ActionResult Index()
         {
@@ -80,26 +81,19 @@ namespace Sklep_Leaware.Controllers
 
             try
             {
-                if (string.Equals(values["PromoCode"], PromoCode,
-                    StringComparison.OrdinalIgnoreCase) == false)
-                {
-                    return View(order);
-                }
-                else
-                {
-                    order.Username = User.Identity.Name;
+                var cart = GetCart(this.HttpContext);
+                order.Username = cart.Identifier;
                     order.OrderDate = DateTime.Now;
 
                     //Save Order
-                    CartService.AddOrder(order);
+                    //CartService.AddOrder(order);
 
                     //Process the order
-                    var cart = GetCart(this.HttpContext);
+                    
                     CartService.CreateOrder(order, cart);
 
                     return RedirectToAction("Complete",
                         new { id = order.OrderId });
-                }
             }
             catch
             {

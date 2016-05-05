@@ -106,6 +106,17 @@ namespace Sklep_Leaware.Controllers
             return RedirectToAction(MVC.Home.Index());
         }
 
+        public virtual ActionResult UserOrders()
+        {
+            if (Request.Cookies[FormsAuthentication.FormsCookieName] != null)
+            {
+                var userName = FormsAuthentication.Decrypt(Request.Cookies[FormsAuthentication.FormsCookieName].Value).Name;
+                var result = UsersService.GetAllUserOrders(userName);
+                return View(result);
+            }
+            return RedirectToAction(MVC.Users.Login());
+        }
+
         // GET: Users/Edit/5
         public virtual ActionResult Edit(int id)
         {

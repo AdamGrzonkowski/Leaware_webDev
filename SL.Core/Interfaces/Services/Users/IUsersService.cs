@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using SL.Core.Domain.Orders;
 
 namespace SL.Core.Interfaces.Services.Users
 {
@@ -8,5 +9,6 @@ namespace SL.Core.Interfaces.Services.Users
         Domain.Users.Users GetDetails(long? id);
         void Register(Domain.Users.Users user);
         bool Login(Domain.Users.Users user);
+        List<Order> GetAllUserOrders(string username);
     }
 }

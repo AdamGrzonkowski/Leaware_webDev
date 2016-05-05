@@ -283,9 +283,10 @@
     <Content Include="Views\Books\Edit.cshtml" />
     <Content Include="Views\Books\Index.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
-    <None Include="Views\Cart\AddressAndPayment.cshtml" />
+    <Content Include="Views\Cart\AddressAndPayment.cshtml" />
     <None Include="Views\Cart\Complete.cshtml" />
     <None Include="Views\Users\Login.cshtml" />
+    <Content Include="Views\Users\UserOrders.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

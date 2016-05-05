@@ -52,6 +52,8 @@ namespace SL.Core.Domain.Orders
         public string Email { get; set; }
         [ScaffoldColumn(false)]
         public decimal Total { get; set; }
+        [ScaffoldColumn(false)]
+        public string Status { get; set; }
         public List<OrderDetail> OrderDetails { get; set; }
 
     }

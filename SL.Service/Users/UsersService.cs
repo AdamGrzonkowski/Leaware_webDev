@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using SL.Core.Domain.Orders;
 using SL.Core.Interfaces.Services;
 using SL.Core.Interfaces.Services.Users;
 using SL.Core.Interfaces.UnitOfWork;
@@ -53,6 +54,12 @@ namespace SL.Service.Users
             var hashPass = HashPassword(user.Password, salt);
 
             return userByUsername.Password == hashPass;
+        }
+
+        public List<Order> GetAllUserOrders(string username)
+        {
+            var result = UnitOfWork.OrdersRepository.GetAll().Where(x => x.Username == username).ToList();
+            return result;
         }
 
         #region Helpers

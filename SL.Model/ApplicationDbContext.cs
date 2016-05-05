@@ -22,5 +22,7 @@ namespace SL.Model
             modelBuilder.Entity<Order>();
             modelBuilder.Entity<OrderDetail>();
         }
+
+        public System.Data.Entity.DbSet<SL.Core.Domain.Orders.Order> Orders { get; set; }
     }
 }
