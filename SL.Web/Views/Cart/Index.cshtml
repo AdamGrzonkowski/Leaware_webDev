@@ -5,19 +5,61 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-<h2>title</h2>
+<h3>
+    <em>Review</em> your cart:
+</h3>
+<p class="button">
+    @*@Html.ActionLink("Checkout", "AddressAndPayment", "Checkout")*@
+    </p>
+    <div id="update-message">
+    </div>
+<table>
+    <tr>
+        <th>
+            Album Name
+        </th>
+        <th>
+            Price (each)
+        </th>
+        <th>
+            Quantity
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in
+        Model.CartItems)
+    {
+        <tr id="row-@item.Id">
+            <td>
+                @Html.ActionLink(item.Books.Title, "Details", "Books", new {id = item.BookId}, null)
+            </td>
+            <td>
+                @item.Books.Price
+            </td>
+            <td id="item-count-@item.Id">
+                @item.Count
+            </td>
+            <td>
+                <a href="#" class="RemoveLink"
+                   data-id="@item.Id">
+                    Remove
+                    from cart
+                </a>
+            </td>
+        </tr>
+    }
     <tr>
         <td>
-            @foreach (var item in Model.CartItems)
-            {
-                @item.Books.Title
-                @item.Books.Author
-                @item.Count
-            }
+            Total
         </td>
-        <td>
+        <td></td>
+        <td></td>
+        <td id="cart-total">
             @Model.CartTotal
         </td>
-
     </tr>
+</table>
+
+@section scripts{
+    @Scripts.Render("~/bundles/orders")
+}

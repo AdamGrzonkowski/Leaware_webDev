@@ -227,25 +227,28 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Scripts\ai.0.22.9-build00167.js" />
-    <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\respond.js" />
-    <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\_references.js" />
+    <Content Include="Scripts\Areas\Orders\cart.js" />
+    <Content Include="Scripts\_Common\ai.0.22.9-build00167.js" />
+    <Content Include="Scripts\_Common\ai.0.22.9-build00167.min.js" />
+    <Content Include="Scripts\_Common\bootstrap.js" />
+    <Content Include="Scripts\_Common\bootstrap.min.js" />
+    <None Include="Scripts\_Common\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\_Common\jquery-1.10.2.js" />
+    <Content Include="Scripts\_Common\jquery-1.10.2.min.js" />
+    <None Include="Scripts\_Common\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\_Common\jquery.validate.js" />
+    <Content Include="Scripts\_Common\jquery.validate.min.js" />
+    <Content Include="Scripts\_Common\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\_Common\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\_Common\modernizr-2.6.2.js" />
+    <Content Include="Scripts\_Common\navigationCommon.js" />
+    <Content Include="Scripts\_Common\respond.js" />
+    <Content Include="Scripts\_Common\respond.min.js" />
+    <Content Include="Scripts\_Common\_references.js" />
+    <Content Include="Scripts\_Common\jquery-1.10.2.min.map" />
     <None Include="T4MVC.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>T4MVC.cs</LastGenOutput>
@@ -291,7 +294,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SL.Core\SL.Core.csproj">

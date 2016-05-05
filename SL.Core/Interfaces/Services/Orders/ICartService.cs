@@ -15,5 +15,6 @@ namespace SL.Core.Interfaces.Services.Orders
         void EmptyCart(Cart cart);
         decimal GetTotalPrice(Cart cart);
         long CreateOrder(Order order, Cart cart);
+        int GetCount(Cart cart);
     }
 }

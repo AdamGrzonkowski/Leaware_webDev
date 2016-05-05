@@ -44,6 +44,7 @@ namespace Sklep_Leaware.Controllers
             return RedirectToAction(MVC.Books.Index());
         }
 
+        [HttpPost]
         public virtual ActionResult RemoveFromCart(long id)
         {
             var cart = GetCart(this.HttpContext);
@@ -51,8 +52,18 @@ namespace Sklep_Leaware.Controllers
             {
                 return RedirectToAction(MVC.Users.Login());
             }
-            CartService.RemoveFromCart(id, cart);
-            return RedirectToAction(MVC.Books.Index());
+
+            int itemCount =  CartService.RemoveFromCart(id, cart);
+
+            var results = new ShoppingCartRemove
+            {
+                Message = " Item has been removed from your shopping cart.",
+                CartTotal = CartService.GetTotalPrice(cart),
+                CartCount = CartService.GetCount(cart),
+                ItemCount = itemCount,
+                DeleteId = id
+            };
+            return Json(results);
         }
 
         public virtual Cart GetCart(HttpContextBase context)

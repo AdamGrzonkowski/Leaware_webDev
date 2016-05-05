@@ -45,11 +45,11 @@ namespace SL.Service.Orders
             UnitOfWork.Save();
             return true;
         }
-        public int RemoveFromCart(long bookId, Cart cart)
+        public int RemoveFromCart(long cartItemId, Cart cart)
         {
             var cartItem =
                 UnitOfWork.CartRepository.GetAll()
-                    .FirstOrDefault(x => x.Identifier == cart.Identifier && x.BookId == bookId);
+                    .FirstOrDefault(x => x.Identifier == cart.Identifier && x.Id == cartItemId);
 
             int itemCount = 0;
 
@@ -68,6 +68,14 @@ namespace SL.Service.Orders
                 UnitOfWork.Save();
             }
             return itemCount;
+        }
+
+        public int GetCount(Cart cart)
+        {   
+            int? count = (from cartItems in UnitOfWork.CartRepository.GetAll()
+                          where cartItems.Identifier == cart.Identifier
+                          select (int?)cartItems.Count).Sum();
+            return count ?? 0;
         }
 
 
