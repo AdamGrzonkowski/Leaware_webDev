@@ -11,5 +11,6 @@ namespace SL.Core.Interfaces.Services.Orders
     {
         List<Cart> ShowCart();
         bool AddToCart(long bookId, Cart cart);
+        int RemoveFromCart(long bookId, Cart cart);
     }
 }

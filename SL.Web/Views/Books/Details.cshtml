@@ -47,5 +47,6 @@
 </div>
 <p>
     @Html.ActionLink("Add to cart", "AddToCart", "Cart", new { id = Model.Id }, null)
+    @Html.ActionLink("Remove from cart", "RemoveFromCart", "Cart", new { id = Model.Id }, null)
     @Html.ActionLink("Back to List", "Index")
 </p>

@@ -31,8 +31,19 @@ namespace Sklep_Leaware.Controllers
             {
                 return RedirectToAction(MVC.Users.Login());
             }
-            var result = CartService.AddToCart(id, cart);
-            return null;
+            CartService.AddToCart(id, cart);          
+            return RedirectToAction(MVC.Books.Index());
+        }
+
+        public virtual ActionResult RemoveFromCart(long id)
+        {
+            var cart = GetCart(this.HttpContext);
+            if (string.IsNullOrWhiteSpace(cart.Identifier))
+            {
+                return RedirectToAction(MVC.Users.Login());
+            }
+            CartService.RemoveFromCart(id, cart);
+            return RedirectToAction(MVC.Books.Index());
         }
 
         public Cart GetCart(HttpContextBase context)
@@ -63,7 +74,7 @@ namespace Sklep_Leaware.Controllers
                    // context.Session[CartSessionKey] = tempCartId.ToString();
                 }
             }
-            return String.Empty;
+            return context.Session[CartSessionKey].ToString();
         }
     }
 }

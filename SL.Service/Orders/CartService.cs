@@ -21,15 +21,14 @@ namespace SL.Service.Orders
 
         public bool AddToCart(long bookId, Cart cart)
         {
-            var book = UnitOfWork.BooksRepository.GetById(bookId);
-            var cartItem = UnitOfWork.CartRepository.GetAll().FirstOrDefault(x => x.Identifier == cart.Identifier && x.BookId == book.Id);
+            var cartItem = UnitOfWork.CartRepository.GetAll().FirstOrDefault(x => x.Identifier == cart.Identifier && x.BookId == bookId);
 
             // If such item doesn't exit yet, create it
             if (cartItem == null)
             {
                 cartItem = new Cart
                 {
-                    BookId = book.Id,
+                    BookId = bookId,
                     Identifier = cart.Identifier,
                     Count = 1,
                     DateCreated = DateTime.Now
@@ -46,6 +45,31 @@ namespace SL.Service.Orders
             UnitOfWork.Save();
             return true;
         }
+        public int RemoveFromCart(long bookId, Cart cart)
+        {
+            var cartItem =
+                UnitOfWork.CartRepository.GetAll()
+                    .FirstOrDefault(x => x.Identifier == cart.Identifier && x.BookId == bookId);
+
+            int itemCount = 0;
+
+            if (cartItem != null)
+            {
+                if (cartItem.Count > 1)
+                {
+                    cartItem.Count--;
+                    itemCount = cartItem.Count;
+                    UnitOfWork.CartRepository.Update(cartItem);
+                }
+                else
+                {
+                    UnitOfWork.CartRepository.Remove(cartItem);
+                }
+                UnitOfWork.Save();
+            }
+            return itemCount;
+        }
+
 
         public List<Cart> ShowCart()
         {
