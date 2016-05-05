@@ -1,10 +1,9 @@
 ﻿@if (Request.Cookies[FormsAuthentication.FormsCookieName] != null)
 {
     <ul class="nav navbar-nav navbar-right">
-        @{
-            var loggedUsername = FormsAuthentication.Decrypt(Request.Cookies[FormsAuthentication.FormsCookieName].Value).Name;
-        }
-        <li>@Html.ActionLink("Wyloguj "+ loggedUsername, "Logout", "Users")</li>
+        <li><a href="@Url.Action(MVC.Cart.Index())" class="glyphicon glyphicon-align-center glyphicon-shopping-cart" style="font-size: 1.5em; color: #999999;"></a></li>
+        <li>@Html.ActionLink("Moje zamówienia", "UserOrders", "Users")</li>
+        <li>@Html.ActionLink("Wyloguj", "Logout", "Users")</li>
     </ul>
 }
 else
