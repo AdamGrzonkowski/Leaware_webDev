@@ -69,6 +69,7 @@ namespace Sklep_Leaware.Controllers
 
         public virtual ActionResult Login()
         {
+            TempData["ReturnUrl"] = Server.UrlEncode(Request.UrlReferrer.PathAndQuery);
             return View();
         }
 
@@ -81,6 +82,11 @@ namespace Sklep_Leaware.Controllers
                 if (UsersService.Login(user))
                 {
                     FormsAuthentication.SetAuthCookie(user.Username, false);
+                    if (TempData["ReturnUrl"] != null)
+                    {
+                        var returnUrl = Server.UrlDecode(TempData["ReturnUrl"].ToString());
+                        return Redirect(returnUrl);
+                    }
                 }
                 else
                 {
