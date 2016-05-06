@@ -1,6 +1,17 @@
 # Leaware_webDev
 ## Summary
 Fully customized project, written as a test of my programming skills in ASP.NET MVC5.
+####Functionalities
+1. Register / login / logout - works on FormsAuthentication.
+2. Viewing products.
+3. Cart is being stored in session - lasts until checkout or logout.
+4. Adding products to shopping cart (available only for logged in users - if not logged in, it redirects to login page and after successful loggin in, redirects again to calling site).
+5. Removing products from shopping cart.
+6. Checkout the cart (after order completion, shopping cart is empty).
+7. Order completion.
+8. List of orders for users with their status.
+9. For future use - all carts are being saved in database (even the ones not checked out), with respective dates of their creation.
+
 #### Project structure
 Project written in accordance with onion architecture.
 * SL.Core - interfaces and domain entities. Independent from rest of solution.
@@ -72,14 +83,3 @@ var user = Mapper.Map<Register, Users>(model);
 T4MVC was used to simplify calling controller methods. You can read all about this awesome tool on its [github site](https://github.com/T4MVC/T4MVC).
 #### Bootstrap
 To make site look good on any device, bootstrap was applied to views. Entire application is written on top of standard ASP.NET theme.
-
-##Functionalities
-1. Register / login / logout - works on FormsAuthentication.
-2. Viewing products.
-3. Cart is being stored in session - lasts until checkout or logout.
-4. Adding products to shopping cart (available only for logged in users - if not logged in, it redirects to login page and after successful loggin in, redirects again to calling site).
-5. Removing products from shopping cart.
-6. Checkout the cart (after order completion, shopping cart is empty).
-7. Order completion.
-8. List of orders for users with their status.
-9. For future use - all carts are being saved in database (even the ones not checked out), with respective dates of their creation.
