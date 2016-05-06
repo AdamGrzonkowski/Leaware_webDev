@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SL.Core.Domain.Orders
 {
-    public partial class Order
+    public class Order
     {
         [ScaffoldColumn(false)]
         public long OrderId { get; set; }
@@ -55,6 +56,5 @@ namespace SL.Core.Domain.Orders
         [ScaffoldColumn(false)]
         public string Status { get; set; }
         public List<OrderDetail> OrderDetails { get; set; }
-
     }
 }

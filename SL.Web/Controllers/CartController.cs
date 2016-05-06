@@ -13,6 +13,9 @@ using SL.Model.Models.Users;
 
 namespace Sklep_Leaware.Controllers
 {
+    /// <summary>
+    /// Controller responsible for cart related actions
+    /// </summary>
     public partial class CartController : Controller
     {
         private ICartService CartService { get; set; }
@@ -21,9 +24,9 @@ namespace Sklep_Leaware.Controllers
             CartService = cartService;
         }
 
-        public const string CartSessionKey = "CartId";
+        // Stores session key of shopping cart
+        public static readonly string CartSessionKey = CommonResources.CartSessionKey;
 
-        // GET: Cart
         public virtual ActionResult Index()
         {
             var cart = GetCart(this.HttpContext);
@@ -59,7 +62,7 @@ namespace Sklep_Leaware.Controllers
 
             var results = new ShoppingCartRemove
             {
-                Message = " Item has been removed from your shopping cart.",
+                Message = CommonResources.RemoveItemMessage,
                 CartTotal = CartService.GetTotalPrice(cart),
                 CartCount = CartService.GetCount(cart),
                 ItemCount = itemCount,
@@ -68,13 +71,13 @@ namespace Sklep_Leaware.Controllers
             return Json(results);
         }
 
-        public ActionResult AddressAndPayment()
+        public virtual ActionResult AddressAndPayment()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult AddressAndPayment(FormCollection values)
+        public virtual ActionResult AddressAndPayment(FormCollection values)
         {
             var order = new Order();
             TryUpdateModel(order);
@@ -83,26 +86,19 @@ namespace Sklep_Leaware.Controllers
             {
                 var cart = GetCart(this.HttpContext);
                 order.Username = cart.Identifier;
-                    order.OrderDate = DateTime.Now;
+                order.OrderDate = DateTime.Now;
 
-                    //Save Order
-                    //CartService.AddOrder(order);
+                CartService.CreateOrder(order, cart);
 
-                    //Process the order
-                    
-                    CartService.CreateOrder(order, cart);
-
-                    return RedirectToAction("Complete",
-                        new { id = order.OrderId });
+                return RedirectToAction(MVC.Cart.Complete(order.OrderId));
             }
             catch
             {
-                //Invalid - redisplay with errors
                 return View(order);
             }
         }
 
-        public ActionResult Complete(int id)
+        public virtual ActionResult Complete(long id)
         {
             var userName = GetCart(this.HttpContext).Identifier;
             // Check if it's this user order
@@ -113,11 +109,12 @@ namespace Sklep_Leaware.Controllers
             }
             else
             {
-                return View("Error");
+                return View(MVC.Shared.Views.Error);
             }
         }
 
 
+        #region GetCartActions
         public virtual Cart GetCart(HttpContextBase context)
         {
             var cart = new Cart {Identifier = GetCartId(context)};
@@ -146,7 +143,8 @@ namespace Sklep_Leaware.Controllers
                    // context.Session[CartSessionKey] = tempCartId.ToString();
                 }
             }
-            return context.Session[CartSessionKey].ToString();
+            return context.Session[CartSessionKey]?.ToString();
         }
+        #endregion
     }
 }

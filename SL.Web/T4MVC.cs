@@ -73,23 +73,46 @@ namespace Links
         private const string URLPATH = "~/Scripts";
         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
-        public static readonly string _references_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/_references.min.js") ? Url("_references.min.js") : Url("_references.js");
-        public static readonly string ai_0_22_9_build00167_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ai.0.22.9-build00167.min.js") ? Url("ai.0.22.9-build00167.min.js") : Url("ai.0.22.9-build00167.js");
-        public static readonly string ai_0_22_9_build00167_min_js = Url("ai.0.22.9-build00167.min.js");
-        public static readonly string bootstrap_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap.min.js") ? Url("bootstrap.min.js") : Url("bootstrap.js");
-        public static readonly string bootstrap_min_js = Url("bootstrap.min.js");
-        public static readonly string jquery_1_10_2_intellisense_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-1.10.2.intellisense.min.js") ? Url("jquery-1.10.2.intellisense.min.js") : Url("jquery-1.10.2.intellisense.js");
-        public static readonly string jquery_1_10_2_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-1.10.2.min.js") ? Url("jquery-1.10.2.min.js") : Url("jquery-1.10.2.js");
-        public static readonly string jquery_1_10_2_min_js = Url("jquery-1.10.2.min.js");
-        public static readonly string jquery_1_10_2_min_map = Url("jquery-1.10.2.min.map");
-        public static readonly string jquery_validate_vsdoc_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.validate-vsdoc.min.js") ? Url("jquery.validate-vsdoc.min.js") : Url("jquery.validate-vsdoc.js");
-        public static readonly string jquery_validate_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.validate.min.js") ? Url("jquery.validate.min.js") : Url("jquery.validate.js");
-        public static readonly string jquery_validate_min_js = Url("jquery.validate.min.js");
-        public static readonly string jquery_validate_unobtrusive_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.validate.unobtrusive.min.js") ? Url("jquery.validate.unobtrusive.min.js") : Url("jquery.validate.unobtrusive.js");
-        public static readonly string jquery_validate_unobtrusive_min_js = Url("jquery.validate.unobtrusive.min.js");
-        public static readonly string modernizr_2_6_2_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/modernizr-2.6.2.min.js") ? Url("modernizr-2.6.2.min.js") : Url("modernizr-2.6.2.js");
-        public static readonly string respond_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/respond.min.js") ? Url("respond.min.js") : Url("respond.js");
-        public static readonly string respond_min_js = Url("respond.min.js");
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class _Common {
+            private const string URLPATH = "~/Scripts/_Common";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string _references_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/_references.min.js") ? Url("_references.min.js") : Url("_references.js");
+            public static readonly string ai_0_22_9_build00167_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ai.0.22.9-build00167.min.js") ? Url("ai.0.22.9-build00167.min.js") : Url("ai.0.22.9-build00167.js");
+            public static readonly string ai_0_22_9_build00167_min_js = Url("ai.0.22.9-build00167.min.js");
+            public static readonly string bootstrap_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap.min.js") ? Url("bootstrap.min.js") : Url("bootstrap.js");
+            public static readonly string bootstrap_min_js = Url("bootstrap.min.js");
+            public static readonly string jquery_1_10_2_intellisense_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-1.10.2.intellisense.min.js") ? Url("jquery-1.10.2.intellisense.min.js") : Url("jquery-1.10.2.intellisense.js");
+            public static readonly string jquery_1_10_2_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-1.10.2.min.js") ? Url("jquery-1.10.2.min.js") : Url("jquery-1.10.2.js");
+            public static readonly string jquery_1_10_2_min_js = Url("jquery-1.10.2.min.js");
+            public static readonly string jquery_1_10_2_min_map = Url("jquery-1.10.2.min.map");
+            public static readonly string jquery_validate_vsdoc_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.validate-vsdoc.min.js") ? Url("jquery.validate-vsdoc.min.js") : Url("jquery.validate-vsdoc.js");
+            public static readonly string jquery_validate_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.validate.min.js") ? Url("jquery.validate.min.js") : Url("jquery.validate.js");
+            public static readonly string jquery_validate_min_js = Url("jquery.validate.min.js");
+            public static readonly string jquery_validate_unobtrusive_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.validate.unobtrusive.min.js") ? Url("jquery.validate.unobtrusive.min.js") : Url("jquery.validate.unobtrusive.js");
+            public static readonly string jquery_validate_unobtrusive_min_js = Url("jquery.validate.unobtrusive.min.js");
+            public static readonly string modernizr_2_6_2_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/modernizr-2.6.2.min.js") ? Url("modernizr-2.6.2.min.js") : Url("modernizr-2.6.2.js");
+            public static readonly string navigationCommon_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/navigationCommon.min.js") ? Url("navigationCommon.min.js") : Url("navigationCommon.js");
+            public static readonly string respond_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/respond.min.js") ? Url("respond.min.js") : Url("respond.js");
+            public static readonly string respond_min_js = Url("respond.min.js");
+        }
+    
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class Areas {
+            private const string URLPATH = "~/Scripts/Areas";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class Orders {
+                private const string URLPATH = "~/Scripts/Areas/Orders";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                public static readonly string cart_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/cart.min.js") ? Url("cart.min.js") : Url("cart.js");
+            }
+        
+        }
+    
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -108,23 +131,43 @@ namespace Links
     {
         public static partial class Scripts 
         {
+            public static partial class _Common 
+            {
+                public static class Assets
+                {
+                    public const string _references_js = "~/Scripts/_Common/_references.js"; 
+                    public const string ai_0_22_9_build00167_js = "~/Scripts/_Common/ai.0.22.9-build00167.js"; 
+                    public const string ai_0_22_9_build00167_min_js = "~/Scripts/_Common/ai.0.22.9-build00167.min.js"; 
+                    public const string bootstrap_js = "~/Scripts/_Common/bootstrap.js"; 
+                    public const string bootstrap_min_js = "~/Scripts/_Common/bootstrap.min.js"; 
+                    public const string jquery_1_10_2_intellisense_js = "~/Scripts/_Common/jquery-1.10.2.intellisense.js"; 
+                    public const string jquery_1_10_2_js = "~/Scripts/_Common/jquery-1.10.2.js"; 
+                    public const string jquery_1_10_2_min_js = "~/Scripts/_Common/jquery-1.10.2.min.js"; 
+                    public const string jquery_validate_js = "~/Scripts/_Common/jquery.validate.js"; 
+                    public const string jquery_validate_min_js = "~/Scripts/_Common/jquery.validate.min.js"; 
+                    public const string jquery_validate_unobtrusive_js = "~/Scripts/_Common/jquery.validate.unobtrusive.js"; 
+                    public const string jquery_validate_unobtrusive_min_js = "~/Scripts/_Common/jquery.validate.unobtrusive.min.js"; 
+                    public const string modernizr_2_6_2_js = "~/Scripts/_Common/modernizr-2.6.2.js"; 
+                    public const string navigationCommon_js = "~/Scripts/_Common/navigationCommon.js"; 
+                    public const string respond_js = "~/Scripts/_Common/respond.js"; 
+                    public const string respond_min_js = "~/Scripts/_Common/respond.min.js"; 
+                }
+            }
+            public static partial class Areas 
+            {
+                public static partial class Orders 
+                {
+                    public static class Assets
+                    {
+                        public const string cart_js = "~/Scripts/Areas/Orders/cart.js"; 
+                    }
+                }
+                public static class Assets
+                {
+                }
+            }
             public static class Assets
             {
-                public const string _references_js = "~/Scripts/_references.js"; 
-                public const string ai_0_22_9_build00167_js = "~/Scripts/ai.0.22.9-build00167.js"; 
-                public const string ai_0_22_9_build00167_min_js = "~/Scripts/ai.0.22.9-build00167.min.js"; 
-                public const string bootstrap_js = "~/Scripts/bootstrap.js"; 
-                public const string bootstrap_min_js = "~/Scripts/bootstrap.min.js"; 
-                public const string jquery_1_10_2_intellisense_js = "~/Scripts/jquery-1.10.2.intellisense.js"; 
-                public const string jquery_1_10_2_js = "~/Scripts/jquery-1.10.2.js"; 
-                public const string jquery_1_10_2_min_js = "~/Scripts/jquery-1.10.2.min.js"; 
-                public const string jquery_validate_js = "~/Scripts/jquery.validate.js"; 
-                public const string jquery_validate_min_js = "~/Scripts/jquery.validate.min.js"; 
-                public const string jquery_validate_unobtrusive_js = "~/Scripts/jquery.validate.unobtrusive.js"; 
-                public const string jquery_validate_unobtrusive_min_js = "~/Scripts/jquery.validate.unobtrusive.min.js"; 
-                public const string modernizr_2_6_2_js = "~/Scripts/modernizr-2.6.2.js"; 
-                public const string respond_js = "~/Scripts/respond.js"; 
-                public const string respond_min_js = "~/Scripts/respond.min.js"; 
             }
         }
         public static partial class Content 

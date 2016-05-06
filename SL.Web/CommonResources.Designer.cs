@@ -61,6 +61,33 @@ namespace Sklep_Leaware {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CartId.
+        /// </summary>
+        internal static string CartSessionKey {
+            get {
+                return ResourceManager.GetString("CartSessionKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wrong data.
+        /// </summary>
+        internal static string LoginFailedModelError {
+            get {
+                return ResourceManager.GetString("LoginFailedModelError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Przedmiot usunięty z koszyka..
+        /// </summary>
+        internal static string RemoveItemMessage {
+            get {
+                return ResourceManager.GetString("RemoveItemMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wprowadzone dane są błędne..
         /// </summary>
         internal static string UsersController_Login_WrongData {

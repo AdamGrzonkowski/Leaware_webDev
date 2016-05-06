@@ -56,9 +56,9 @@
       <Project>{4FDF32F7-5359-4032-865C-E28E4F0E49C4}</Project>
       <Name>SL.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SL.Model\SL.Model.csproj">
+    <ProjectReference Include="..\SL.Model\SL.Models.csproj">
       <Project>{2A31BFD5-E2D6-48C3-A85D-799A9053362C}</Project>
-      <Name>SL.Model</Name>
+      <Name>SL.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

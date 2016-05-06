@@ -119,15 +119,11 @@ namespace Sklep_Leaware.Controllers
             public class _ViewNamesClass
             {
                 public readonly string Create = "Create";
-                public readonly string Delete = "Delete";
                 public readonly string Details = "Details";
-                public readonly string Edit = "Edit";
                 public readonly string Index = "Index";
             }
             public readonly string Create = "~/Views/Books/Create.cshtml";
-            public readonly string Delete = "~/Views/Books/Delete.cshtml";
             public readonly string Details = "~/Views/Books/Details.cshtml";
-            public readonly string Edit = "~/Views/Books/Edit.cshtml";
             public readonly string Index = "~/Views/Books/Index.cshtml";
         }
     }

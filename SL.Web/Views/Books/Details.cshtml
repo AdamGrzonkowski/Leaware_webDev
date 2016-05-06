@@ -1,14 +1,14 @@
 ﻿@model SL.Core.Domain.Products.Books
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Szczegóły";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Szczegóły</h2>
 
 <div>
-    <h4>Books</h4>
+    <h6>PID: @Model.Id</h6>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -46,7 +46,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Add to cart", "AddToCart", "Cart", new { id = Model.Id }, null)
-    @Html.ActionLink("Remove from cart", "RemoveFromCart", "Cart", new { id = Model.Id }, null)
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Wróc do listy", MVC.Books.Index(), new { @class = "btn btn-default" })
+    @Html.ActionLink("Dodaj do koszyka", MVC.Cart.AddToCart(Model.Id), new {@class = "btn btn-default"})
 </p>

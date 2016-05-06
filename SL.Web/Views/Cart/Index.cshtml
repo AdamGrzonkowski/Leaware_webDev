@@ -6,23 +6,20 @@
 }
 
 <h3>
-    <em>Review</em> your cart:
+    Twój koszyk:
 </h3>
-<p class="button">
-    @*@Html.ActionLink("Checkout", "AddressAndPayment", "Checkout")*@
-    </p>
     <div id="update-message">
     </div>
-<table>
+<table class="table-responsive table-condensed">
     <tr>
         <th>
-            Album Name
+            Nazwa
         </th>
         <th>
-            Price (each)
+            Cena sztuki
         </th>
         <th>
-            Quantity
+            Ilość
         </th>
         <th></th>
     </tr>
@@ -31,7 +28,7 @@
     {
         <tr id="row-@item.Id">
             <td>
-                @Html.ActionLink(item.Books.Title, "Details", "Books", new {id = item.BookId}, null)
+                @Html.ActionLink(item.Books.Title, MVC.Books.Details(item.BookId))
             </td>
             <td>
                 @item.Books.Price
@@ -40,17 +37,15 @@
                 @item.Count
             </td>
             <td>
-                <a href="#" class="RemoveLink"
-                   data-id="@item.Id">
-                    Remove
-                    from cart
+                <a href="#" class="RemoveLink btn-warning" data-id="@item.Id">
+                    Usuń z koszyka
                 </a>
             </td>
         </tr>
     }
     <tr>
         <td>
-            Total
+            Suma
         </td>
         <td></td>
         <td></td>
@@ -59,6 +54,9 @@
         </td>
     </tr>
 </table>
+@if (Model.CartItems.Count > 0) { 
+    @Html.ActionLink("Kup", MVC.Cart.AddressAndPayment(), new {@class = "btn btn-success"})
+}
 
 @section scripts{
     @Scripts.Render("~/bundles/orders")

@@ -17,6 +17,9 @@ using SL.Model.Models.Users;
 
 namespace Sklep_Leaware.Controllers
 {
+    /// <summary>
+    /// Controller responsible for user related actions
+    /// </summary>
     public partial class UsersController : Controller
     {
         private IUsersService UsersService { get; set; }
@@ -31,7 +34,6 @@ namespace Sklep_Leaware.Controllers
             return View(result);
         }
 
-        // GET: Users/Details/5
         public virtual ActionResult Details(long? id)
         {
             if (id == null)
@@ -47,13 +49,11 @@ namespace Sklep_Leaware.Controllers
             return View(result);
         }
 
-        // GET: Users/Register
         public virtual ActionResult Register()
         {
             return View();
         }
 
-        // POST: Users/Register
         [HttpPost]
         public virtual ActionResult Register(Register model)
         {
@@ -90,7 +90,7 @@ namespace Sklep_Leaware.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("Wrong data", CommonResources.UsersController_Login_WrongData);
+                    ModelState.AddModelError(CommonResources.LoginFailedModelError, CommonResources.UsersController_Login_WrongData);
                     return View();
                 }
                 return RedirectToAction(MVC.Home.Index());
@@ -115,50 +115,6 @@ namespace Sklep_Leaware.Controllers
                 return View(result);
             }
             return RedirectToAction(MVC.Users.Login());
-        }
-
-        // GET: Users/Edit/5
-        public virtual ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Users/Edit/5
-        [HttpPost]
-        public virtual ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Users/Delete/5
-        public virtual ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Users/Delete/5
-        [HttpPost]
-        public virtual ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }

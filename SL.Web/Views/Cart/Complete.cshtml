@@ -1,12 +1,11 @@
-﻿@model int
+﻿@model long
 @{
     ViewBag.Title = "Checkout Complete";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>Checkout Complete</h2>
-<p>Thanks for your order! Your order number is: @Model</p>
+<h2>Towar zamówiony</h2>
+<p>Dziękujemy za zakupy! Twój numer zamówienia: @Model</p>
 <p>
-    How about shopping for some more music in our
-    @Html.ActionLink("store",
-"Index", "Home")
+    Zobacz inne interesujące pozycje na naszej
+    @Html.ActionLink("liście", MVC.Books.Index())
 </p>

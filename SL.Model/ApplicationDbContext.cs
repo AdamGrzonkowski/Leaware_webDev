@@ -21,8 +21,7 @@ namespace SL.Model
             modelBuilder.Entity<Cart>();
             modelBuilder.Entity<Order>();
             modelBuilder.Entity<OrderDetail>();
+            modelBuilder.Entity<Shipment>();
         }
-
-        public System.Data.Entity.DbSet<SL.Core.Domain.Orders.Order> Orders { get; set; }
     }
 }

@@ -13,6 +13,9 @@ using SL.Model;
 
 namespace Sklep_Leaware.Controllers
 {
+    /// <summary>
+    /// Controller responsible for book related actions
+    /// </summary>
     public partial class BooksController : Controller
     {
         private IBooksService BooksService { get; set; }
@@ -21,14 +24,12 @@ namespace Sklep_Leaware.Controllers
             BooksService = booksService;
         }
 
-        // GET: Books
         public virtual ActionResult Index()
         {
             var result = BooksService.GetAllBooks();
             return View(result);
         }
 
-        // GET: Books/Details/5
         public virtual ActionResult Details(long? id)
         {
             if (id == null)
@@ -44,13 +45,11 @@ namespace Sklep_Leaware.Controllers
             return View(result);
         }
 
-        // GET: Books/Create
         public virtual ActionResult Create()
         {
             return View();
         }
 
-        // POST: Books/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
