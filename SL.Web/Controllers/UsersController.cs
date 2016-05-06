@@ -111,7 +111,24 @@ namespace Sklep_Leaware.Controllers
             if (Request.Cookies[FormsAuthentication.FormsCookieName] != null)
             {
                 var userName = FormsAuthentication.Decrypt(Request.Cookies[FormsAuthentication.FormsCookieName].Value).Name;
-                var result = UsersService.GetAllUserOrders(userName);
+                var orders = UsersService.GetAllUserOrders(userName);
+                var ordersDetails = UsersService.GetAllUserOrderDetails(orders.Select(x => x.OrderId).ToList());
+
+                var result = new List<UsersOrders>();
+
+                foreach (var order in orders)
+                {
+                    var userOrder = new UsersOrders
+                    {
+                        OrderId = order.OrderId,
+                        OrderDate = order.OrderDate,
+                        Total = order.Total,
+                        OrderDetails = ordersDetails.Where(x => x.OrderId == order.OrderId).ToList(),
+                        Status = order.Status
+                    };
+                    result.Add(userOrder);
+                }
+
                 return View(result);
             }
             return RedirectToAction(MVC.Users.Login());

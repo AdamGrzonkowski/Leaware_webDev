@@ -62,6 +62,12 @@ namespace SL.Service.Users
             return result;
         }
 
+        public List<OrderDetail> GetAllUserOrderDetails(List<long> orderIds)
+        {
+            var ordersDetails = UnitOfWork.OrderDetailRepository.GetAll().Where(x => orderIds.Contains(x.OrderId)).ToList();
+            return ordersDetails;
+        }
+
         #region Helpers
         public static string HashPassword(string passwd, string salt = null)
         {

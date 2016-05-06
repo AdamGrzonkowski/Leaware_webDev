@@ -57,6 +57,7 @@
     <Compile Include="Models\Orders\ShoppingCartRemove.cs" />
     <Compile Include="Models\Users\Login.cs" />
     <Compile Include="Models\Users\Register.cs" />
+    <Compile Include="Models\Users\UsersOrders.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SL.Core.Domain.Orders.Order>
+﻿@model IEnumerable<SL.Model.Models.Users.UsersOrders>
 
 @{
     ViewBag.Title = "View";
@@ -10,71 +10,50 @@
 <div class="table-responsive">
     <table class="table">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstName)
+            <th class="col-md-1">
+                @Html.DisplayNameFor(model => model.OrderId)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastName)
+            <th class="col-md-2">
+                @Html.DisplayNameFor(model => model.OrderDate)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Address)
+            <th class="col-md-6">
+                <p class="col-md-6">Tytuł</p>
+                <p class="col-md-3">Ilość</p>
+                <p class="col-md-3">Cena</p>
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.City)
+            <th class="col-md-1">
+                @Html.DisplayNameFor(model => model.Total)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.State)
+            <th class="col-md-2">
+                @Html.DisplayNameFor(model => model.Status)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PostalCode)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Country)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Phone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th></th>
+
         </tr>
 
         @foreach (var item in Model)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.FirstName)
+                    @Html.DisplayFor(modelItem => item.OrderId)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.LastName)
+                    @Html.DisplayFor(modelItem => item.OrderDate)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Address)
+                    @foreach (var orderDetail in item.OrderDetails)
+                    {
+                        <p class="col-md-6">@orderDetail.Books.Title</p>
+                        <p class="col-md-3">@orderDetail.Quantity</p>
+                        <p class="col-md-3">@orderDetail.UnitPrice</p>
+                    }
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.City)
+                    @Html.DisplayFor(modelItem => item.Total)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.State)
+                    @Html.DisplayFor(modelItem => item.Status)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PostalCode)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Country)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Phone)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.OrderId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.OrderId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.OrderId })
-                </td>
+
             </tr>
         }
 

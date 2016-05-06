@@ -10,5 +10,6 @@ namespace SL.Core.Interfaces.Services.Users
         void Register(Domain.Users.Users user);
         bool Login(Domain.Users.Users user);
         List<Order> GetAllUserOrders(string username);
+        List<OrderDetail> GetAllUserOrderDetails(List<long> orderIds);
     }
 }
