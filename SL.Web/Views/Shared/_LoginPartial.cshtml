@@ -2,8 +2,8 @@
 {
     <ul class="nav navbar-nav navbar-right">
         <li><a href="@Url.Action(MVC.Cart.Index())" class="glyphicon glyphicon-align-center glyphicon-shopping-cart" style="font-size: 1.5em; color: #999999;"></a></li>
-        <li>@Html.ActionLink("Moje zamówienia", "UserOrders", "Users")</li>
-        <li>@Html.ActionLink("Wyloguj", "Logout", "Users")</li>
+        <li>@Html.ActionLink("Moje zamówienia", MVC.Users.UserOrders())</li>
+        <li>@Html.ActionLink("Wyloguj", MVC.Users.LogOut())</li>
     </ul>
 }
 else

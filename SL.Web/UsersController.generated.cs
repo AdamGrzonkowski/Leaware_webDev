@@ -56,12 +56,6 @@ namespace Sklep_Leaware.Controllers
             return RedirectToActionPermanent(taskResult.Result);
         }
 
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public virtual System.Web.Mvc.ActionResult Details()
-        {
-            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Details);
-        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public UsersController Actions { get { return MVC.Users; } }
@@ -78,8 +72,6 @@ namespace Sklep_Leaware.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass
         {
-            public readonly string Index = "Index";
-            public readonly string Details = "Details";
             public readonly string Register = "Register";
             public readonly string Login = "Login";
             public readonly string LogOut = "LogOut";
@@ -89,8 +81,6 @@ namespace Sklep_Leaware.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
-            public const string Index = "Index";
-            public const string Details = "Details";
             public const string Register = "Register";
             public const string Login = "Login";
             public const string LogOut = "LogOut";
@@ -98,14 +88,6 @@ namespace Sklep_Leaware.Controllers
         }
 
 
-        static readonly ActionParamsClass_Details s_params_Details = new ActionParamsClass_Details();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_Details DetailsParams { get { return s_params_Details; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_Details
-        {
-            public readonly string id = "id";
-        }
         static readonly ActionParamsClass_Register s_params_Register = new ActionParamsClass_Register();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ActionParamsClass_Register RegisterParams { get { return s_params_Register; } }
@@ -132,14 +114,10 @@ namespace Sklep_Leaware.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string Details = "Details";
-                public readonly string Index = "Index";
                 public readonly string Login = "Login";
                 public readonly string Register = "Register";
                 public readonly string UserOrders = "UserOrders";
             }
-            public readonly string Details = "~/Views/Users/Details.cshtml";
-            public readonly string Index = "~/Views/Users/Index.cshtml";
             public readonly string Login = "~/Views/Users/Login.cshtml";
             public readonly string Register = "~/Views/Users/Register.cshtml";
             public readonly string UserOrders = "~/Views/Users/UserOrders.cshtml";
@@ -150,29 +128,6 @@ namespace Sklep_Leaware.Controllers
     public partial class T4MVC_UsersController : Sklep_Leaware.Controllers.UsersController
     {
         public T4MVC_UsersController() : base(Dummy.Instance) { }
-
-        [NonAction]
-        partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult Index()
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
-            IndexOverride(callInfo);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void DetailsOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long? id);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult Details(long? id)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Details);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
-            DetailsOverride(callInfo, id);
-            return callInfo;
-        }
 
         [NonAction]
         partial void RegisterOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);

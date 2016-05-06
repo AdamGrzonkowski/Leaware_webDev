@@ -28,27 +28,6 @@ namespace Sklep_Leaware.Controllers
             UsersService = usersService;
         }
 
-        public virtual ActionResult Index()
-        {
-            var result = UsersService.GetAllUsers();
-            return View(result);
-        }
-
-        public virtual ActionResult Details(long? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            var result = UsersService.GetDetails(id);
-            if (result == null)
-            {
-                return HttpNotFound();
-            }
-            return View(result);
-        }
-
         public virtual ActionResult Register()
         {
             return View();
@@ -62,7 +41,7 @@ namespace Sklep_Leaware.Controllers
                 var user = Mapper.Map<Register, Users>(model);
                 UsersService.Register(user);
 
-                return RedirectToAction(MVC.Users.Index());
+                return RedirectToAction(MVC.Home.Index());
             }
             return View(model);
         }
