@@ -37,4 +37,6 @@ using System.Runtime.InteropServices;
 [assembly: InternalsVisibleTo("SL.Service.Tests")]
 [assembly: InternalsVisibleTo("SL.Service.Explorables")]
 [assembly: InternalsVisibleTo("Tests")]
+[assembly: InternalsVisibleTo("SL.Tests")]
+[assembly: InternalsVisibleTo("SL.Tests1")]
 

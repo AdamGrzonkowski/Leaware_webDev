@@ -48,7 +48,7 @@ namespace Sklep_Leaware.Controllers
 
         public virtual ActionResult Login()
         {
-            TempData["ReturnUrl"] = Server.UrlEncode(Request.UrlReferrer.PathAndQuery);
+            TempData["ReturnUrl"] = Server.UrlEncode(Request.UrlReferrer?.PathAndQuery);
             return View();
         }
 

@@ -234,6 +234,8 @@
     <Content Include="Scripts\_Common\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\_Common\bootstrap.js" />
     <Content Include="Scripts\_Common\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\LeawareWeb - Web Deploy %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\LeawareWeb - Web Deploy.pubxml" />
     <None Include="Scripts\_Common\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\_Common\jquery-1.10.2.js" />
     <Content Include="Scripts\_Common\jquery-1.10.2.min.js" />

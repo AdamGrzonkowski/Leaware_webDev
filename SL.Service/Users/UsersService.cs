@@ -22,29 +22,32 @@ namespace SL.Service.Users
 
         public List<Core.Domain.Users.Users> GetAllUsers()
         {
-            var result = UnitOfWork.UsersRepository.GetAll().ToList();
+            var result = UnitOfWork?.UsersRepository.GetAll().ToList();
             return result;
         }
 
         public Core.Domain.Users.Users GetDetails(long? id)
         {
-            var result = UnitOfWork.UsersRepository.GetById(id.Value);
+            var result = UnitOfWork?.UsersRepository.GetById(id.Value);
             return result;
         }
 
         public void Register(Core.Domain.Users.Users user)
         {
-            user.Salt = GenerateSalt();
-            user.Password = HashPassword(user.Password, user.Salt);
-            user.IsActive = true;
+            if (user != null)
+            {
+                user.Salt = GenerateSalt();
+                user.Password = HashPassword(user.Password, user.Salt);
+                user.IsActive = true;
 
-            UnitOfWork.UsersRepository.Add(user);
-            UnitOfWork.Save();
+                UnitOfWork.UsersRepository.Add(user);
+                UnitOfWork.Save();
+            }
         }
 
         public bool Login(Core.Domain.Users.Users user)
         {
-            var userByUsername = UnitOfWork.UsersRepository.GetAll().FirstOrDefault(x => x.Username == user.Username);
+            var userByUsername = UnitOfWork?.UsersRepository.GetAll().FirstOrDefault(x => x.Username == user.Username);
             if (userByUsername == null)
             {
                 return false;
@@ -58,14 +61,23 @@ namespace SL.Service.Users
 
         public List<Order> GetAllUserOrders(string username)
         {
-            var result = UnitOfWork.OrdersRepository.GetAll().Where(x => x.Username == username).ToList();
-            return result;
+            if (username != null)
+            {
+                var result = UnitOfWork?.OrdersRepository.GetAll().Where(x => x.Username == username).ToList();
+                return result;
+            }
+            return null;
         }
 
         public List<OrderDetail> GetAllUserOrderDetails(List<long> orderIds)
         {
-            var ordersDetails = UnitOfWork.OrderDetailRepository.GetAll().Where(x => orderIds.Contains(x.OrderId)).ToList();
-            return ordersDetails;
+            if (orderIds != null)
+            {
+                var ordersDetails = UnitOfWork?.OrderDetailRepository.GetAll().Where(x => orderIds.Contains(x.OrderId)).ToList();
+                return ordersDetails;
+            }
+            return null;
+
         }
 
         #region Helpers
