@@ -19,9 +19,13 @@ namespace SL.Service.Orders
             UnitOfWork = unitOfWork;
         }
 
-        public bool AddToCart(long bookId, Cart cart)
+        public bool AddToCart(long bookId = -1, Cart cart = null)
         {
-            var cartItem = UnitOfWork.CartRepository.GetAll().FirstOrDefault(x => x.Identifier == cart.Identifier && x.BookId == bookId);
+            if (bookId == -1 || cart == null)
+            {
+                return false;
+            }
+            var cartItem = UnitOfWork?.CartRepository.GetAll().FirstOrDefault(x => x.Identifier == cart.Identifier && x.BookId == bookId);
 
             // If such item doesn't exit yet, create it
             if (cartItem == null)
@@ -33,22 +37,27 @@ namespace SL.Service.Orders
                     Count = 1,
                     DateCreated = DateTime.Now
                 };
-                UnitOfWork.CartRepository.Add(cartItem);
+                UnitOfWork?.CartRepository.Add(cartItem);
             }
             else
             {
                 // Else increase its count
                 cartItem.Count++;
-                UnitOfWork.CartRepository.Update(cartItem);
+                UnitOfWork?.CartRepository.Update(cartItem);
             }
             
-            UnitOfWork.Save();
+            UnitOfWork?.Save();
             return true;
         }
-        public int RemoveFromCart(long cartItemId, Cart cart)
+        public int? RemoveFromCart(long cartItemId = -1, Cart cart = null)
         {
+            if (cartItemId == -1 || cart == null)
+            {
+                return null;
+            }
+
             var cartItem =
-                UnitOfWork.CartRepository.GetAll()
+                UnitOfWork?.CartRepository.GetAll()
                     .FirstOrDefault(x => x.Identifier == cart.Identifier && x.Id == cartItemId);
 
             int itemCount = 0;
@@ -59,19 +68,24 @@ namespace SL.Service.Orders
                 {
                     cartItem.Count--;
                     itemCount = cartItem.Count;
-                    UnitOfWork.CartRepository.Update(cartItem);
+                    UnitOfWork?.CartRepository.Update(cartItem);
                 }
                 else
                 {
-                    UnitOfWork.CartRepository.Remove(cartItem);
+                    UnitOfWork?.CartRepository.Remove(cartItem);
                 }
-                UnitOfWork.Save();
+                UnitOfWork?.Save();
             }
             return itemCount;
         }
 
         public int GetCount(Cart cart)
-        {   
+        {
+            if (cart == null || UnitOfWork == null)
+            {
+                return 0;
+            }
+
             int? count = (from cartItems in UnitOfWork.CartRepository.GetAll()
                           where cartItems.Identifier == cart.Identifier
                           select (int?)cartItems.Count).Sum();
@@ -81,19 +95,32 @@ namespace SL.Service.Orders
 
         public List<Cart> GetCartItems(Cart cart)
         {
-            var result = UnitOfWork.CartRepository.GetAll().Where(x => x.Identifier == cart.Identifier).ToList();
+            List<Cart> result = null;
+            if (cart != null)
+            {
+                result = UnitOfWork?.CartRepository.GetAll().Where(x => x.Identifier == cart.Identifier).ToList();
+                
+            }
             return result;
         }
 
         public void EmptyCart(Cart cart)
         {
-            var cartItems = UnitOfWork.CartRepository.GetAll().Where(x => x.Identifier == cart.Identifier).ToList();
-            UnitOfWork.CartRepository.RemoveRange(cartItems);
-            UnitOfWork.Save();
+            if (cart != null)
+            {
+                var cartItems = UnitOfWork?.CartRepository.GetAll().Where(x => x.Identifier == cart.Identifier).ToList();
+                UnitOfWork?.CartRepository.RemoveRange(cartItems);
+                UnitOfWork?.Save();
+            }
         }
 
         public decimal GetTotalPrice(Cart cart)
         {
+            if (cart == null || UnitOfWork == null)
+            {
+                return decimal.Zero;
+            }
+
             decimal? total = (from cartItems in UnitOfWork.CartRepository.GetAll()
                               where cartItems.Identifier == cart.Identifier
                               select (int?)cartItems.Count *
@@ -104,21 +131,33 @@ namespace SL.Service.Orders
 
         public void AddOrder(Order order)
         {
-            UnitOfWork.OrdersRepository.Add(order);
-            UnitOfWork.Save();
+            if (order != null)
+            {
+                UnitOfWork?.OrdersRepository.Add(order);
+                UnitOfWork?.Save();
+            }
         }
 
         public bool ValidateOrder(long orderId, string userName)
         {
-            var result = UnitOfWork.OrdersRepository.GetAll().Any(x => x.OrderId == orderId && x.Username == userName);
-            return result;
+            var result = UnitOfWork?.OrdersRepository.GetAll().Any(x => x.OrderId == orderId && x.Username == userName);
+            return result.GetValueOrDefault(false);
         }
 
-        public long CreateOrder(Order order, Cart cart)
+        public long? CreateOrder(Order order, Cart cart)
         {
-            decimal orderTotal = 0;
-
+            if (order == null || cart == null)
+            {
+                return null;
+            }
+            
             var cartItems = GetCartItems(cart);
+            if (cartItems == null)
+            {
+                return null;
+            }
+
+            decimal orderTotal = 0;
 
             foreach (var item in cartItems)
             {
@@ -131,13 +170,13 @@ namespace SL.Service.Orders
                 };
                 // Set the order total of the shopping cart
                 orderTotal += (item.Count*item.Books.Price);
-                UnitOfWork.OrderDetailRepository.Add(orderDetail);
+                UnitOfWork?.OrderDetailRepository.Add(orderDetail);
 
             }
             order.Total = orderTotal;
-            UnitOfWork.OrdersRepository.Add(order);
+            UnitOfWork?.OrdersRepository.Add(order);
 
-            UnitOfWork.Save();
+            UnitOfWork?.Save();
             EmptyCart(cart);
 
             // Return the OrderId as the confirmation number

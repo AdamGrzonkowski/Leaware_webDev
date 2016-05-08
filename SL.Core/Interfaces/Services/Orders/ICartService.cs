@@ -11,10 +11,10 @@ namespace SL.Core.Interfaces.Services.Orders
     {
         List<Cart> GetCartItems(Cart cart);
         bool AddToCart(long bookId, Cart cart);
-        int RemoveFromCart(long bookId, Cart cart);
+        int? RemoveFromCart(long bookId, Cart cart);
         void EmptyCart(Cart cart);
         decimal GetTotalPrice(Cart cart);
-        long CreateOrder(Order order, Cart cart);
+        long? CreateOrder(Order order, Cart cart);
         int GetCount(Cart cart);
         void AddOrder(Order order);
         bool ValidateOrder(long orderId, string userName);

@@ -45,7 +45,8 @@ namespace Sklep_Leaware.Controllers
             {
                 return RedirectToAction(MVC.Users.Login());
             }
-            CartService.AddToCart(id, cart);          
+            CartService.AddToCart(id, cart);
+
             return RedirectToAction(MVC.Books.Index());
         }
 
@@ -58,17 +59,21 @@ namespace Sklep_Leaware.Controllers
                 return RedirectToAction(MVC.Users.Login());
             }
 
-            int itemCount =  CartService.RemoveFromCart(id, cart);
-
-            var results = new ShoppingCartRemove
+            int? itemCount =  CartService.RemoveFromCart(id, cart);
+            if (itemCount.HasValue)
             {
-                Message = CommonResources.RemoveItemMessage,
-                CartTotal = CartService.GetTotalPrice(cart),
-                CartCount = CartService.GetCount(cart),
-                ItemCount = itemCount,
-                DeleteId = id
-            };
-            return Json(results);
+                var results = new ShoppingCartRemove
+                {
+                    Message = CommonResources.RemoveItemMessage,
+                    CartTotal = CartService.GetTotalPrice(cart),
+                    CartCount = CartService.GetCount(cart),
+                    ItemCount = itemCount.Value,
+                    DeleteId = id
+                };
+                return Json(results);
+            }
+            return null;
+
         }
 
         public virtual ActionResult AddressAndPayment()
@@ -128,9 +133,9 @@ namespace Sklep_Leaware.Controllers
 
         public virtual string GetCartId(HttpContextBase context)
         {
-            if (context.Session[CartSessionKey] == null)
+            if (context?.Session[CartSessionKey] == null)
             {
-                if (Request.Cookies[FormsAuthentication.FormsCookieName] != null)
+                if (Request?.Cookies[FormsAuthentication.FormsCookieName] != null)
                 {
                     context.Session[CartSessionKey] =
                         FormsAuthentication.Decrypt(Request.Cookies[FormsAuthentication.FormsCookieName].Value).Name;
@@ -143,7 +148,7 @@ namespace Sklep_Leaware.Controllers
                    // context.Session[CartSessionKey] = tempCartId.ToString();
                 }
             }
-            return context.Session[CartSessionKey]?.ToString();
+            return context?.Session[CartSessionKey]?.ToString();
         }
         #endregion
     }
