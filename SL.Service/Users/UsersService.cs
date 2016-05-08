@@ -40,8 +40,8 @@ namespace SL.Service.Users
                 user.Password = HashPassword(user.Password, user.Salt);
                 user.IsActive = true;
 
-                UnitOfWork.UsersRepository.Add(user);
-                UnitOfWork.Save();
+                UnitOfWork?.UsersRepository.Add(user);
+                UnitOfWork?.Save();
             }
         }
 

@@ -124,7 +124,34 @@
     <Compile Include="Services\CartServiceTest.ValidateOrderTest.g.cs">
       <DependentUpon>CartServiceTest.cs</DependentUpon>
     </Compile>
+    <Compile Include="Services\UsersServiceTest.ConstructorTest.g.cs">
+      <DependentUpon>UsersServiceTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Services\UsersServiceTest.cs" />
+    <Compile Include="Services\UsersServiceTest.GenerateSaltTest.g.cs">
+      <DependentUpon>UsersServiceTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\UsersServiceTest.GetAllUserOrderDetailsTest.g.cs">
+      <DependentUpon>UsersServiceTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\UsersServiceTest.GetAllUserOrdersTest.g.cs">
+      <DependentUpon>UsersServiceTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\UsersServiceTest.GetAllUsersTest.g.cs">
+      <DependentUpon>UsersServiceTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\UsersServiceTest.GetDetailsTest.g.cs">
+      <DependentUpon>UsersServiceTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\UsersServiceTest.HashPasswordTest.g.cs">
+      <DependentUpon>UsersServiceTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\UsersServiceTest.LoginTest.g.cs">
+      <DependentUpon>UsersServiceTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\UsersServiceTest.RegisterTest.g.cs">
+      <DependentUpon>UsersServiceTest.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup />
   <Choose>
