@@ -1,6 +1,9 @@
 # Leaware_webDev
 ## Summary
 Fully customized project, written as a test of my programming skills in ASP.NET MVC5.
+
+Take it for a spin by clicking [this](http://leawareweb.azurewebsites.net/) link.
+
 ####Functionalities
 1. Register / login / logout - works on FormsAuthentication.
 2. Viewing products.
