@@ -21,20 +21,25 @@ namespace SL.Service.Products
 
         public List<Core.Domain.Products.Books> GetAllBooks()
         {
-            var result = UnitOfWork.BooksRepository.GetAll().ToList();
+            var result = UnitOfWork?.BooksRepository.GetAll().ToList();
             return result;
         }
 
         public Core.Domain.Products.Books GetDetails(long? id)
         {
-            var result = UnitOfWork.BooksRepository.GetById(id.Value);
+            if (!id.HasValue) return null;
+
+            var result = UnitOfWork?.BooksRepository.GetById(id.Value);
             return result;
         }
 
         public void Create(Books model)
         {
-            UnitOfWork.BooksRepository.Add(model);
-            UnitOfWork.Save();
+            if (model != null)
+            {
+                UnitOfWork?.BooksRepository.Add(model);
+                UnitOfWork?.Save();
+            }
         }
     }
 }
