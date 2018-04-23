@@ -1,10 +1,9 @@
-# Leaware_webDev
 ## Summary
-Fully customized project, written as a test of my programming skills in ASP.NET MVC5.
+Fully customized project, written as a test of my programming skills in ASP.NET MVC5, back in 2016. Outdated. :-)
 
 Take it for a spin by clicking [this](http://leawareweb.azurewebsites.net/) link.
 
-####Functionalities
+#### Functionalities
 1. Register / login / logout - works on FormsAuthentication.
 2. Viewing products.
 3. Cart is being stored in session - lasts until checkout or logout.
