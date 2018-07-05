@@ -1,5 +1,5 @@
-## Summary
-Fully customized project, written as a test of my programming skills in ASP.NET MVC5, back in 2016. Outdated. :-)
+## Summary - project is now obsolete and outdated.
+Fully customized project, written as a test of my programming skills in ASP.NET MVC5, back in 2016. 
 
 Take it for a spin by clicking [this](http://leawareweb.azurewebsites.net/) link.
 
